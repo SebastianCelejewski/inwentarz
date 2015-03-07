@@ -1,1 +1,0 @@
-javaw -jar -splash:splash.jpeg inwentarz-1.2.4.jar
