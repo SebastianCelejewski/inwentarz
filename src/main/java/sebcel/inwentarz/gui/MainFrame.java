@@ -2,6 +2,8 @@ package sebcel.inwentarz.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
+import java.io.FileInputStream;
+import java.util.Properties;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
@@ -71,22 +73,36 @@ public class MainFrame extends JFrame {
     }
 
     public final static void main(String[] args) {
-	if (args.length < 2) {
-	    throw new RuntimeException("Command line arguments should contain driverClass and URL");
-	}
-
 	Splash splash = new Splash();
 	splash.show(APPLICATION_TITLE);
 
-	String driverClass = args[0];
-	String databaseConnectionUrl = args[1];
+	Configuration configuration = loadConfiguration();
 
-	JComponent gui = buildApplicationGUI(driverClass, databaseConnectionUrl);
+	JComponent gui = buildApplicationGUI(configuration.getDatabaseDriver(), configuration.getConnectionString());
 	JFrame mainFrame = createMainFrame(gui);
 
 	splash.hide();
 	mainFrame.setVisible(true);
 	mainFrame.toFront();
+    }
+
+    private static Configuration loadConfiguration() {
+	try {
+	    Properties properties = new Properties();
+	    properties.load(new FileInputStream("config.properties"));
+	    String databaseDriver = properties.getProperty("databaseDriver");
+	    String connectionString = properties.getProperty("connectionString");
+	    
+	    System.out.println("databaseDriver: "+databaseDriver);
+	    System.out.println("connectionString: "+connectionString);
+	    
+	    Configuration config = new Configuration();
+	    config.setDatabaseDriver(databaseDriver);
+	    config.setConnectionString(connectionString);
+	    return config;
+	} catch (Exception ex) {
+	    throw new RuntimeException("Failed to load configuration from config.properties file: " + ex.getMessage(), ex);
+	}
     }
 
     private static JComponent buildApplicationGUI(String driverClass, String databaseConnectionUrl) {
@@ -95,7 +111,7 @@ public class MainFrame extends JFrame {
 	ConnectionFactory connectionFactory = new ConnectionFactory(driverClass, databaseConnectionUrl);
 
 	IComparatorFactory comparatorFactory = new ComparatorFactory();
-	
+
 	final ILifecycleManager<BookStatus> bookLifecycleManager = new BookLifecycleManager();
 	final ILifecycleManager<ScontrumStatus> scontrumLifecycleManager = new ScontrumLifecycleManager();
 
@@ -124,12 +140,12 @@ public class MainFrame extends JFrame {
 	mainPanel.setLayout(new BorderLayout());
 	mainPanel.add(tabbedPane, BorderLayout.CENTER);
 	mainPanel.add(statusPanel, BorderLayout.SOUTH);
-	
+
 	return mainPanel;
     }
 
     private static StatusPanel buildStatusPanel(IStatisticsDao statisticsDao, DataChangeManager dataChangeManager) {
-	StatusPanel statusPanel = new StatusPanel(statisticsDao);	
+	StatusPanel statusPanel = new StatusPanel(statisticsDao);
 	dataChangeManager.addDataChangeListener(statusPanel);
 	return statusPanel;
     }
@@ -185,7 +201,7 @@ public class MainFrame extends JFrame {
 	bookPrinterFactory.setIconImage(icon);
 	authorPicker.setIconImage(icon);
 	authorPickerAuthorCreator.setIconImage(icon);
-	
+
 	dataChangeManager.addDataChangeListener(bookListPanel);
 
 	return bookListPanel;
