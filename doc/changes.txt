@@ -1,0 +1,82 @@
+0.3.0 2009-01-28
+- Wczytywanie konfiguracji bazy danych z linii poleceñ
+
+0.4.0 2009-02-12
+- Usuniêcie problemy z odœwie¿aniem okien
+- Poprawki interfejsu u¿ytkownika
+- Dodanie tytu³ów okien programu
+- Usuniêty b³¹d zwi¹zany z dodawaniem nowego autora
+
+0.5.0 2009-02-27
+- Uzupe³nione tytu³y okien.
+- Po utworzeniu autor jest automatycznie wstawiany do wybieracza autorów.
+- Dodanie mo¿liwoœci kasowania ksi¹¿ek. Zmodyfikowanie dzia³ania wycofywania.
+- Dodanie prostej statystyki.
+- Pierwsze od biedy sortowanie po autorach.
+- Przebudowane filtry listy ksi¹¿ek i listy autorów.
+- Dodanie dymków dla niektórych przycisków.
+- Dodanie nowych operacji: wypo¿yczenie i zwrot ksi¹¿ki.
+- Ostrze¿enie przed rêczn¹ zmian¹ statusu ksi¹¿ki.
+
+0.6.0 2009-03-25
+- Czêœciowe uporz¹dkowanie kodu.
+- Statusy ksi¹¿ki nie s¹ brane z bazy danych.
+- Dodanie cyklu ¿ycia ksi¹¿ki.
+- Po ubytkowaniu ksi¹¿ki ksi¹¿ka nie przestaje byæ zaznaczona na liœcie ksi¹¿ek.
+- Trochê lepszy szablon wydruku karteczek.
+
+0.7.0 2009-03-25
+- Poprawienie sortowania po statusach, datach i cenach ksi¹¿ek.
+- Dodanie pola 'Uwagi'.
+- Zmiana wygl¹du przycisków s³u¿¹cych do dodawania i usuwania autorów z listy autorów ksi¹¿ki.
+- Pogrupowanie przycisków pod list¹ ksi¹¿ek i list¹ autorów na "Zarz¹dzanie" i "Operacje".
+- Panel ze statystyk¹ odœwie¿a siê automatycznie.
+- Zmodyfikowanie rejestru operacji ksi¹¿ki.
+- Dodanie kolorowania na liœcie ksi¹¿ek na podstawie statusu.
+
+0.7.1 2009-03-27
+- Splash screen
+- Ikony okien
+
+0.7.2 2009-05-03
+- Zmiana szablonu wydruku, aby mieœci³y siê czterocyfrowe numery inwentarzowe
+- Zmodyfikowany splash screen
+
+0.8 2009-05-23
+- Porz¹dna statystyka
+
+0.9 2009-05-30
+- Wyœwietlanie szczegó³ów ksi¹¿ki
+- Weryfikacja istnienia ksi¹¿ki
+
+1.0 2009-09-22
+- Wszystkie klawisze wra¿liwe na status i liczbê zaznaczonych ksi¹¿ek
+- Mo¿liwoœæ drukowania wielu ksi¹¿ek na raz
+
+1.1 2009-09-22
+- Wprowadzenie skontrum (bez interfejsu, tylko w kodzie i w bazie danych)
+
+1.2 2009-10-03
+- Rozbudowa skontrum: zak³adka ze statystyk¹
+- Rozbudowa skontrum: filtr listy ksi¹¿ek umo¿liwia pokazanie ksi¹¿ek zweryfikowanych albo niezweryfikowanych
+
+1.2.1 2009-10-03
+- Poprawienie kolorowania
+
+1.2.2 ?
+- ?
+
+1.2.3 2010-03-21
+- Statystyka ksi¹¿ek: dodana kolumna zawieraj¹ca wartoœæ ksi¹¿ek, które przyby³y w danym roku
+- Status bar: zawiera liczbê ksi¹¿ek posiadanych, dostêpnych i wypo¿yczonych
+- Lista ksi¹¿ek mo¿e byæ tworzona wielokrotnie i automatycznie siê odœwie¿a podczas zmiany danych w bazie
+- Ulepszona obs³uga skontrum: otwieranie i zamykanie, lista skontrum z informacjami
+
+1.2.4 2015-03-07
+- Plik konfiguracyjny
+- Tworzenie zipa Mavenem
+- Skrypt do tworzenia bazy danych
+- Publikacja na GitHubie
+
+TODO:
+- Skontrum przez telefon komórkowy

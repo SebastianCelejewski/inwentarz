@@ -63,7 +63,7 @@ public class MainFrame extends JFrame {
 
     private static final long serialVersionUID = 3646966981291881166L;
     private static final Image icon = new ImageIcon("inwentarz.gif").getImage();
-    private static final String APPLICATION_TITLE = "Inwentarz 1.2.3";
+    private static final String APPLICATION_TITLE = "Inwentarz 1.2.4";
 
     public MainFrame(JComponent mainComponent) {
 	this.setTitle(APPLICATION_TITLE);
