@@ -1,5 +1,12 @@
-# inwentarz
-Simple book inventory
+# Inwentarz - A simple book inventory
+
+* Book list
+* Authors list
+* Statistics
+* Lending
+* Scontrum
+* Card printing
+* Changes log
 
 ![Inwentarz splash screen](https://raw.githubusercontent.com/SebastianCelejewski/inwentarz/master/doc/images/splash.png)
 
