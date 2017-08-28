@@ -76,7 +76,12 @@ public class MainFrame extends JFrame {
 	Splash splash = new Splash();
 	splash.show(APPLICATION_TITLE);
 
-	Configuration configuration = loadConfiguration();
+	String configurationFilePath = "config.properties";
+	if (args.length > 0) {
+	    configurationFilePath = args[0];
+	}
+	
+	Configuration configuration = loadConfiguration(configurationFilePath);
 
 	JComponent gui = buildApplicationGUI(configuration.getDatabaseDriver(), configuration.getConnectionString());
 	JFrame mainFrame = createMainFrame(gui);
@@ -86,10 +91,12 @@ public class MainFrame extends JFrame {
 	mainFrame.toFront();
     }
 
-    private static Configuration loadConfiguration() {
+    private static Configuration loadConfiguration(String configurationFilePath) {
 	try {
+	    System.out.println("Loading application configuration from " + configurationFilePath);
+	    
 	    Properties properties = new Properties();
-	    properties.load(new FileInputStream("config.properties"));
+	    properties.load(new FileInputStream(configurationFilePath));
 	    String databaseDriver = properties.getProperty("databaseDriver");
 	    String connectionString = properties.getProperty("connectionString");
 	    
