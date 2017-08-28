@@ -104,7 +104,7 @@ public class ScontrumDao implements IScontrumDao {
 	    }
 
 	    statement = connectionFactory.getConnection().createStatement();
-	    query = "SELECT count(*) FROM ksiazki_skontrum where id_skontrum = " + scontrumId;
+	    query = "SELECT count(distinct id_ksiazki) FROM ksiazki_skontrum where id_skontrum = " + scontrumId;
 	    System.out.println("SQL: " + query);
 	    rs = statement.executeQuery(query);
 	    if (rs.next()) {

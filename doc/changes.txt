@@ -88,5 +88,8 @@
 - Skrypt do tworzenia bazy danych
 - Publikacja na GitHubie
 
+1.2.5 2017-08-28
+- Mo¿liwe jest wielokrotne weryfikowanie posiadania ksi¹¿ki podczas tego samego skontrum. Dziêki temu dla skontrum trwaj¹cych kilka lat jeœli ksi¹¿ka by³a weryfikowana kilka razy (np. w odstêpie kilku lat), to wszystkie akty weryfikacji bêd¹ zapisane w bazie danych, nie tylko pierwszy.
+
 TODO:
 - Skontrum przez telefon komórkowy

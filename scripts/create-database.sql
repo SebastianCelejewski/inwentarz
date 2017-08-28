@@ -83,7 +83,6 @@ CREATE TABLE `ksiazki_skontrum` (
   `id_skontrum` int(10) unsigned NOT NULL DEFAULT '0',
   `id_ksiazki` int(10) unsigned NOT NULL DEFAULT '0',
   `data_weryfikacji` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id_skontrum`,`id_ksiazki`),
   KEY `FK_ksiazki_skontrum_2` (`id_ksiazki`),
   CONSTRAINT `FK_ksiazki_skontrum_1` FOREIGN KEY (`id_skontrum`) REFERENCES `skontrum` (`id`),
   CONSTRAINT `FK_ksiazki_skontrum_2` FOREIGN KEY (`id_ksiazki`) REFERENCES `ksiazki` (`id`)

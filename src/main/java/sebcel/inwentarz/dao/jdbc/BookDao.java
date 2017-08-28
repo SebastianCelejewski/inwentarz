@@ -585,19 +585,9 @@ public class BookDao implements IBookDao {
 	    int verificationId = scontrumDao.getOpenScontrumId();
 
 	    statement = connection.createStatement();
-	    query = "select data_weryfikacji from ksiazki_skontrum where id_skontrum = " + verificationId + " and id_ksiazki = " + bookId;
-	    System.out.println(query);
-	    ResultSet result = statement.executeQuery(query);
-	    if (result.next()) {
-		Date dataWeryfikacji = result.getTimestamp(1);
-		throw new InwentarzException("Ksi¹¿ka by³a ju¿ weryfikowana w trakcie bie¿¹cego skontrum w dniu " + dtf.format(dataWeryfikacji) + ".");
-	    }
-
-	    statement = connection.createStatement();
 	    query = "INSERT INTO ksiazki_skontrum (id_skontrum, id_ksiazki, data_weryfikacji) values (" + verificationId + ", " + bookId + ", '" + dtf.format(verificationDate) + "')";
 	    System.out.println(query);
 	    statement.execute(query);
-
 	    connection.commit();
 	    
 	    dataChangeListener.dataChanged();
