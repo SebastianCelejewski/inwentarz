@@ -3,3 +3,4 @@
 .pmd
 /target
 /reports
+/.settings
