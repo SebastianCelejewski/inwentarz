@@ -1,3 +1,13 @@
+0.1.0 2008-12-03
+- ?
+
+0.2.0 2008-12-07
+- Dodanie funkcjonalnoœci zwi¹zanej z autorami ksi¹¿ek.
+- Listy ksi¹¿ek i autorów s¹ posortowane alfabetycznie.
+- Usuniête numery identyfikatorów bazodanowych z interfejsu u¿ytkownika.
+- Przy dodawaniu nowej ksi¹¿ki data w³¹czenia jest domyœlnie ustawiane na datê bie¿¹c¹.
+- Brak ustawienia daty w³¹czenia jest oznaczany wyraŸniej.
+ 
 0.3.0 2009-01-28
 - Wczytywanie konfiguracji bazy danych z linii poleceñ
 
