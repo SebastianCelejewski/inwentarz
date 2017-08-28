@@ -1,10 +1,5 @@
 package sebcel.inwentarz.gui.splash;
 
-/*
- * SplashDemo.java
- *
- */
-
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Font;
@@ -43,17 +38,5 @@ public class Splash extends Frame {
 
     public void hide() {
 	splash.close();
-    }
-
-    public static void main(String args[]) {
-
-	Splash splash = new Splash();
-	splash.show("Inwentarz 0.7.0");
-	try {
-	    Thread.sleep(5000);
-	} catch (InterruptedException ex) {
-	    ;
-	}
-	splash.hide();
     }
 }
