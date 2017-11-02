@@ -30,154 +30,154 @@ public class BookListPanel extends JPanel implements IFilterListener, IBookListE
     private IBookVerifier bookVerifier;
 
     public BookListPanel(BookListFilterPanel filterPanel, BookListButtonPanel buttonPanel, BookListTablePanel listTablePanel, IBookCreator elementCreator, IBookEditor elementEditor, IBookDeletor elementDeletor,
-	    IBookDetailsViewer elementDetailsViewer, IBookRegisterViewer elementRegisterViewer, IBookPrinterFactory elementPrinterFactory, IBookLender bookLender, IBookReturner bookReturner, IBookVerifier bookVerifier) {
-	this.filterPanel = filterPanel;
-	this.buttonPanel = buttonPanel;
-	this.tablePanel = listTablePanel;
+            IBookDetailsViewer elementDetailsViewer, IBookRegisterViewer elementRegisterViewer, IBookPrinterFactory elementPrinterFactory, IBookLender bookLender, IBookReturner bookReturner, IBookVerifier bookVerifier) {
+        this.filterPanel = filterPanel;
+        this.buttonPanel = buttonPanel;
+        this.tablePanel = listTablePanel;
 
-	this.bookCreator = elementCreator;
-	this.bookEditor = elementEditor;
-	this.bookDeletor = elementDeletor;
-	this.bookDetailsViewer = elementDetailsViewer;
-	this.bookRegisterViewer = elementRegisterViewer;
-	this.bookPrinterFactory = elementPrinterFactory;
-	this.bookLender = bookLender;
-	this.bookReturner = bookReturner;
-	this.bookVerifier = bookVerifier;
+        this.bookCreator = elementCreator;
+        this.bookEditor = elementEditor;
+        this.bookDeletor = elementDeletor;
+        this.bookDetailsViewer = elementDetailsViewer;
+        this.bookRegisterViewer = elementRegisterViewer;
+        this.bookPrinterFactory = elementPrinterFactory;
+        this.bookLender = bookLender;
+        this.bookReturner = bookReturner;
+        this.bookVerifier = bookVerifier;
 
-	initialize();
+        initialize();
     }
 
     private void initialize() {
-	this.setLayout(new BorderLayout());
-	this.add(filterPanel, BorderLayout.NORTH);
-	this.add(tablePanel, BorderLayout.CENTER);
-	this.add(buttonPanel, BorderLayout.SOUTH);
+        this.setLayout(new BorderLayout());
+        this.add(filterPanel, BorderLayout.NORTH);
+        this.add(tablePanel, BorderLayout.CENTER);
+        this.add(buttonPanel, BorderLayout.SOUTH);
 
-	tablePanel.addBookStatusListener(buttonPanel);
-	filterPanel.addFilterListener(this);
-	buttonPanel.setBookListEventListener(this);
+        tablePanel.addBookStatusListener(buttonPanel);
+        filterPanel.addFilterListener(this);
+        buttonPanel.setBookListEventListener(this);
     }
 
     @Override
     public void filterChanged() {
-	tablePanel.setFilter(filterPanel.getFilter());
+        tablePanel.setFilter(filterPanel.getFilter());
     }
 
     @Override
     public void addNewElement() {
-	Integer id = bookCreator.createBook();
-	if (id != null) {
-	    tablePanel.reload();
-	    tablePanel.focus(id);
-	}
+        Integer id = bookCreator.createBook();
+        if (id != null) {
+            tablePanel.reload();
+            tablePanel.focus(id);
+        }
     }
 
     @Override
     public void deleteSelectedElement() {
-	Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
-	Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
-	if (selectedBookId != null) {
-	    bookDeletor.deleteBook(selectedBookId.intValue());
-	    tablePanel.reload();
-	    tablePanel.focus(selectedBookId);
-	}
+        Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
+        Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
+        if (selectedBookId != null) {
+            bookDeletor.deleteBook(selectedBookId.intValue());
+            tablePanel.reload();
+            tablePanel.focus(selectedBookId);
+        }
     }
 
     @Override
     public void viewSelectedElementDetails() {
-	Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
-	Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
-	if (selectedBookId != null) {
-	    bookDetailsViewer.viewBookDetails(selectedBookId.intValue());
-	}
+        Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
+        Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
+        if (selectedBookId != null) {
+            bookDetailsViewer.viewBookDetails(selectedBookId.intValue());
+        }
     }
 
     @Override
     public void editSelectedElement() {
-	Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
-	Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
-	if (selectedBookId != null) {
-	    bookEditor.editBook(selectedBookId.intValue());
-	    tablePanel.reload();
-	    tablePanel.focus(selectedBookId);
-	}
+        Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
+        Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
+        if (selectedBookId != null) {
+            bookEditor.editBook(selectedBookId.intValue());
+            tablePanel.reload();
+            tablePanel.focus(selectedBookId);
+        }
     }
 
     @Override
     public void printSelectedElement() {
-	Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
-	if (selectedBookIds != null && selectedBookIds.size() > 0) {
-	    bookPrinterFactory.newSet();
-	    for (Integer selectedBookId : selectedBookIds) {
-		if (selectedBookId != null) {
-		    bookPrinterFactory.newBookPrinter().printBook(selectedBookId.intValue());
-		}
-	    }
-	}
+        Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
+        if (selectedBookIds != null && selectedBookIds.size() > 0) {
+            bookPrinterFactory.newSet();
+            for (Integer selectedBookId : selectedBookIds) {
+                if (selectedBookId != null) {
+                    bookPrinterFactory.newBookPrinter().printBook(selectedBookId.intValue());
+                }
+            }
+        }
     }
 
     @Override
     public void viewSelectedElementRegister() {
-	Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
-	Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
-	if (selectedBookId != null) {
-	    bookRegisterViewer.viewBookRegister(selectedBookId.intValue());
-	}
+        Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
+        Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
+        if (selectedBookId != null) {
+            bookRegisterViewer.viewBookRegister(selectedBookId.intValue());
+        }
     }
 
     @Override
     public void hardDeleteBook() {
-	Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
-	Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
-	if (selectedBookId != null) {
-	    bookDeletor.hardDeleteBook(selectedBookId.intValue());
-	    tablePanel.reload();
-	}
+        Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
+        Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
+        if (selectedBookId != null) {
+            bookDeletor.hardDeleteBook(selectedBookId.intValue());
+            tablePanel.reload();
+        }
     }
 
     @Override
     public void lendBook() {
-	Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
-	Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
-	if (selectedBookId != null) {
-	    bookLender.lendBook(selectedBookId.intValue());
-	    tablePanel.reload();
-	    tablePanel.focus(selectedBookId);
-	}
+        Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
+        Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
+        if (selectedBookId != null) {
+            bookLender.lendBook(selectedBookId.intValue());
+            tablePanel.reload();
+            tablePanel.focus(selectedBookId);
+        }
     }
 
     @Override
     public void returnBook() {
-	Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
-	Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
-	if (selectedBookId != null) {
-	    bookReturner.returnBook(selectedBookId.intValue());
-	    tablePanel.reload();
-	    tablePanel.focus(selectedBookId);
-	}
+        Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
+        Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
+        if (selectedBookId != null) {
+            bookReturner.returnBook(selectedBookId.intValue());
+            tablePanel.reload();
+            tablePanel.focus(selectedBookId);
+        }
     }
 
     @Override
     public void verifyBook() {
-	Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
-	Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
-	if (selectedBookId != null) {
-	    try {
-		bookVerifier.verifyBookExistence(selectedBookId.intValue());
-		tablePanel.reload();
-		tablePanel.focus(selectedBookId);
-	    } catch (InwentarzException ex) {
-		JOptionPane.showMessageDialog(BookListPanel.this, ex.getMessage());
-	    } catch (Exception ex) {
-		ex.printStackTrace();
-		JOptionPane.showMessageDialog(BookListPanel.this, "Wyst¹pi³ krytyczny b³¹d programu:\n"+ex.getMessage());
-	    }
-	}
+        Collection<Integer> selectedBookIds = tablePanel.getSelectedBooks();
+        Integer selectedBookId = ListUtils.getSingleId(selectedBookIds);
+        if (selectedBookId != null) {
+            try {
+                bookVerifier.verifyBookExistence(selectedBookId.intValue());
+                tablePanel.reload();
+                tablePanel.focus(selectedBookId);
+            } catch (InwentarzException ex) {
+                JOptionPane.showMessageDialog(BookListPanel.this, ex.getMessage());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(BookListPanel.this, "Wystï¿½piï¿½ krytyczny bï¿½ï¿½d programu:\n" + ex.getMessage());
+            }
+        }
     }
 
     @Override
     public void dataChanged() {
-	tablePanel.reload();
+        tablePanel.reload();
     }
 }

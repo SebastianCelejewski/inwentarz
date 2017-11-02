@@ -19,23 +19,23 @@ public class BookLifecycleManager implements ILifecycleManager<BookStatus> {
     private Map<BookStatus, List<BookStatus>> allowedTransitions = new HashMap<BookStatus, List<BookStatus>>();
 
     public BookLifecycleManager() {
-	initialize();
+        initialize();
     }
 
     private void initialize() {
-	allowedTransitions.put(DOSTEPNA, Arrays.asList(WYPOZYCZONA, WYCOFANA, USUNIETA));
-	allowedTransitions.put(WYPOZYCZONA, Arrays.asList(DOSTEPNA, WYCOFANA, USUNIETA));
-	allowedTransitions.put(WYCOFANA, Arrays.asList(USUNIETA));
-	allowedTransitions.put(USUNIETA, new ArrayList<BookStatus>());
+        allowedTransitions.put(DOSTEPNA, Arrays.asList(WYPOZYCZONA, WYCOFANA, USUNIETA));
+        allowedTransitions.put(WYPOZYCZONA, Arrays.asList(DOSTEPNA, WYCOFANA, USUNIETA));
+        allowedTransitions.put(WYCOFANA, Arrays.asList(USUNIETA));
+        allowedTransitions.put(USUNIETA, new ArrayList<BookStatus>());
     }
 
     @Override
     public List<BookStatus> getAllowedTransitions(BookStatus bookStatus) {
-	return allowedTransitions.get(bookStatus);
+        return allowedTransitions.get(bookStatus);
     }
 
     @Override
     public List<BookStatus> getAllStatuses() {
-	return Arrays.asList(BookStatus.values());
+        return Arrays.asList(BookStatus.values());
     }
 }

@@ -13,14 +13,14 @@ public class AuthorDeleteFrame extends JDialog implements IAuthorDeletor {
     private IAuthorDao authorDao;
 
     public AuthorDeleteFrame(IAuthorDao authorDao) {
-	this.authorDao = authorDao;
+        this.authorDao = authorDao;
     }
 
     @Override
     public void deleteAuthor(int id) {
-	int result = JOptionPane.showConfirmDialog(null, "Czy na pewno chcesz usun¹æ tego autora?", "Usuwanie autora", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-	if (result == JOptionPane.OK_OPTION) {
-	    authorDao.deleteAuthor(id);
-	}
+        int result = JOptionPane.showConfirmDialog(null, "Czy na pewno chcesz usunÄ…Ä‡ tego autora?", "Usuwanie autora", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            authorDao.deleteAuthor(id);
+        }
     }
 }

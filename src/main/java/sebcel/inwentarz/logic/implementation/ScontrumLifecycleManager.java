@@ -17,21 +17,21 @@ public class ScontrumLifecycleManager implements ILifecycleManager<ScontrumStatu
     private Map<ScontrumStatus, List<ScontrumStatus>> allowedTransitions = new HashMap<ScontrumStatus, List<ScontrumStatus>>();
 
     public ScontrumLifecycleManager() {
-	initialize();
+        initialize();
     }
 
     private void initialize() {
-	allowedTransitions.put(ROZPOCZETE, Arrays.asList(ZAKONCZONE));
-	allowedTransitions.put(ZAKONCZONE, new ArrayList<ScontrumStatus>());
+        allowedTransitions.put(ROZPOCZETE, Arrays.asList(ZAKONCZONE));
+        allowedTransitions.put(ZAKONCZONE, new ArrayList<ScontrumStatus>());
     }
 
     @Override
     public List<ScontrumStatus> getAllowedTransitions(ScontrumStatus status) {
-	return allowedTransitions.get(status);
+        return allowedTransitions.get(status);
     }
 
     @Override
     public List<ScontrumStatus> getAllStatuses() {
-	return Arrays.asList(ScontrumStatus.values());
+        return Arrays.asList(ScontrumStatus.values());
     }
 }

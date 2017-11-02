@@ -6,18 +6,18 @@ public class Configuration {
     private String connectionString;
 
     public String getDatabaseDriver() {
-	return databaseDriver;
+        return databaseDriver;
     }
 
     public void setDatabaseDriver(String databaseDriver) {
-	this.databaseDriver = databaseDriver;
+        this.databaseDriver = databaseDriver;
     }
 
     public String getConnectionString() {
-	return connectionString;
+        return connectionString;
     }
 
     public void setConnectionString(String connectionString) {
-	this.connectionString = connectionString;
+        this.connectionString = connectionString;
     }
 }

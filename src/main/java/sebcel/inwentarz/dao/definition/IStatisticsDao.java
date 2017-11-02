@@ -6,7 +6,7 @@ import sebcel.inwentarz.dao.dto.PurchaseStatistics;
 public interface IStatisticsDao {
 
     public BookStatisticsData getBookStatisticsData();
-    
+
     public PurchaseStatistics getPurchaseStatistics();
 
 }

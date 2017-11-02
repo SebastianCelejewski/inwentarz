@@ -30,33 +30,33 @@ public class BookViewRegisterFrame extends JDialog implements IBookRegisterViewe
     private JButton closeButton = new JButton("Zamknij");
 
     public BookViewRegisterFrame(IBookDao bookDao) {
-	registerPanel = new BookRegisterPanel(bookDao);
+        registerPanel = new BookRegisterPanel(bookDao);
 
-	this.setTitle("Rejestr operacji ksi¹¿ki");
-	this.setLayout(new GridBagLayout());
-	this.setSize(640, 480);
-	GuiTools.centerWindow(this);
+        this.setTitle("Rejestr operacji ksiÄ…Å¼ki");
+        this.setLayout(new GridBagLayout());
+        this.setSize(640, 480);
+        GuiTools.centerWindow(this);
 
-	this.add(registerPanel, new GridBagConstraints(0, y++, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 1, 1));
-	this.add(buttonPanel, new GridBagConstraints(0, y++, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(1, 1, 1, 1), 1, 1));
-	buttonPanel.setLayout(new GridLayout());
-	buttonPanel.add(closeButton);
+        this.add(registerPanel, new GridBagConstraints(0, y++, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(1, 1, 1, 1), 1, 1));
+        this.add(buttonPanel, new GridBagConstraints(0, y++, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(1, 1, 1, 1), 1, 1));
+        buttonPanel.setLayout(new GridLayout());
+        buttonPanel.add(closeButton);
 
-	closeButton.addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		setVisible(false);
-	    }
-	});
+        closeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+            }
+        });
 
-	idBox.setEditable(false);
+        idBox.setEditable(false);
     }
 
     @Override
     public void viewBookRegister(int id) {
-	registerPanel.reload(id);
-	registerPanel.invalidate();
-	this.setModal(true);
-	this.setVisible(true);
+        registerPanel.reload(id);
+        registerPanel.invalidate();
+        this.setModal(true);
+        this.setVisible(true);
     }
 }

@@ -19,75 +19,75 @@ public class ScontrumFilter extends JPanel {
     private static final long serialVersionUID = 1L;
 
     private JCheckBox scontrumFilter = new JCheckBox("Skontrum");
-    private JRadioButton verified = new JRadioButton("Ksi¹¿ki zweryfikowane");
-    private JRadioButton notVerified = new JRadioButton("Ksi¹¿ki niezweryfikowane");
+    private JRadioButton verified = new JRadioButton("KsiÄ…Å¼i zweryfikowane");
+    private JRadioButton notVerified = new JRadioButton("KsiÄ…Å¼ki niezweryfikowane");
 
     private Collection<ActionListener> listeners = new ArrayList<ActionListener>();
 
     public ScontrumFilter() {
-	initialize();
-	updateState();
+        initialize();
+        updateState();
     }
 
     private void initialize() {
-	this.setLayout(new GridBagLayout());
-	this.add(scontrumFilter, new GridBagConstraints(0, 0, 1, 2, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-	this.add(verified, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-	this.add(notVerified, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+        this.setLayout(new GridBagLayout());
+        this.add(scontrumFilter, new GridBagConstraints(0, 0, 1, 2, 0.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+        this.add(verified, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+        this.add(notVerified, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 
-	scontrumFilter.addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		updateState();
-	    }
-	});
+        scontrumFilter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateState();
+            }
+        });
 
-	verified.addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		notVerified.setSelected(!verified.isSelected());
-		updateState();
-	    }
-	});
+        verified.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                notVerified.setSelected(!verified.isSelected());
+                updateState();
+            }
+        });
 
-	notVerified.addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		verified.setSelected(!notVerified.isSelected());
-		updateState();
-	    }
-	});
+        notVerified.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                verified.setSelected(!notVerified.isSelected());
+                updateState();
+            }
+        });
 
-	scontrumFilter.setSelected(false);
+        scontrumFilter.setSelected(false);
     }
 
     private void updateState() {
-	verified.setEnabled(scontrumFilter.isSelected());
-	notVerified.setEnabled(scontrumFilter.isSelected());
-	if (!verified.isSelected() && !notVerified.isSelected()) {
-	    verified.setSelected(true);
-	}
-	for (ActionListener listener : listeners) {
-	    listener.actionPerformed(new ActionEvent(this, 0, null));
-	}
+        verified.setEnabled(scontrumFilter.isSelected());
+        notVerified.setEnabled(scontrumFilter.isSelected());
+        if (!verified.isSelected() && !notVerified.isSelected()) {
+            verified.setSelected(true);
+        }
+        for (ActionListener listener : listeners) {
+            listener.actionPerformed(new ActionEvent(this, 0, null));
+        }
     }
 
     public void addActionListener(ActionListener listener) {
-	listeners.add(listener);
+        listeners.add(listener);
     }
 
     public boolean isSelected() {
-	return scontrumFilter.isSelected();
+        return scontrumFilter.isSelected();
     }
 
     public ScontrumFilterValue getValue() {
-	if (!scontrumFilter.isSelected()) {
-	    return ScontrumFilterValue.NONE;
-	}
-	if (verified.isSelected()) {
-	    return ScontrumFilterValue.VERIFIED;
-	} else {
-	    return ScontrumFilterValue.NOT_VERIFIED;
-	}
+        if (!scontrumFilter.isSelected()) {
+            return ScontrumFilterValue.NONE;
+        }
+        if (verified.isSelected()) {
+            return ScontrumFilterValue.VERIFIED;
+        } else {
+            return ScontrumFilterValue.NOT_VERIFIED;
+        }
     }
 }

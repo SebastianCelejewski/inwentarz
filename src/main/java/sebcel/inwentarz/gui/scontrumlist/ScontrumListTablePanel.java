@@ -31,52 +31,52 @@ public class ScontrumListTablePanel extends JPanel {
     private Set<ISelectionListener<ScontrumStatus>> scontrumStatusListeners = new HashSet<ISelectionListener<ScontrumStatus>>();
 
     public ScontrumListTablePanel(IScontrumDao scontrumDao, IComparatorFactory comparatorFactory) {
-	this.setLayout(new BorderLayout());
-	this.setBorder(BorderFactory.createTitledBorder("Lista skontrum"));
+        this.setLayout(new BorderLayout());
+        this.setBorder(BorderFactory.createTitledBorder("Lista skontrum"));
 
-	tableModel = new ScontrumListTableModel(scontrumDao);
-	tableColumnModel = new ScontrumListTableColumnModel();
-	sorter = new TableRowSorter<ScontrumListTableModel>(tableModel);
+        tableModel = new ScontrumListTableModel(scontrumDao);
+        tableColumnModel = new ScontrumListTableColumnModel();
+        sorter = new TableRowSorter<ScontrumListTableModel>(tableModel);
 
-	cellRenderer = new ScontrumListTableCellRenderer(tableModel);
+        cellRenderer = new ScontrumListTableCellRenderer(tableModel);
 
-	table = new ListTable<ScontrumListElement>(tableModel, tableColumnModel, sorter, cellRenderer);
-	table.addListSelectionListener(new IListSelectionListener<ScontrumListElement>() {
+        table = new ListTable<ScontrumListElement>(tableModel, tableColumnModel, sorter, cellRenderer);
+        table.addListSelectionListener(new IListSelectionListener<ScontrumListElement>() {
 
-	    @Override
-	    public void elementsWasSelected(Collection<ScontrumListElement> elements) {
-		if (elements != null) {
-		    int numberOfSelectedElements = elements.size();
-		    for (ScontrumListElement element : elements) {
-			fireScontrumStatusChanged(new SelectionStatus<ScontrumStatus>(numberOfSelectedElements, element.getStatus()));
-		    }
-		}
-	    }
-	});
+            @Override
+            public void elementsWasSelected(Collection<ScontrumListElement> elements) {
+                if (elements != null) {
+                    int numberOfSelectedElements = elements.size();
+                    for (ScontrumListElement element : elements) {
+                        fireScontrumStatusChanged(new SelectionStatus<ScontrumStatus>(numberOfSelectedElements, element.getStatus()));
+                    }
+                }
+            }
+        });
 
-	this.add(table, BorderLayout.CENTER);
-	reload();
+        this.add(table, BorderLayout.CENTER);
+        reload();
     }
 
     public void reload() {
-	table.reload();
+        table.reload();
     }
 
     public Collection<Integer> getSelectedScontrums() {
-	return table.getSelectedElementIds();
+        return table.getSelectedElementIds();
     }
 
     public void focus(Integer id) {
-	table.setSelectedElementId(id);
+        table.setSelectedElementId(id);
     }
 
     private void fireScontrumStatusChanged(SelectionStatus<ScontrumStatus> selectionStatus) {
-	for (ISelectionListener<ScontrumStatus> listener : scontrumStatusListeners) {
-	    listener.statusChanged(selectionStatus);
-	}
+        for (ISelectionListener<ScontrumStatus> listener : scontrumStatusListeners) {
+            listener.statusChanged(selectionStatus);
+        }
     }
 
     public void addScontrumStatusListener(ISelectionListener<ScontrumStatus> scontrumStatusListener) {
-	scontrumStatusListeners.add(scontrumStatusListener);
+        scontrumStatusListeners.add(scontrumStatusListener);
     }
 }

@@ -15,7 +15,7 @@ public interface IScontrumDao {
     public ScontrumStatisticsData getScontrumStatistics(int scontrumId);
 
     public List<ScontrumListElement> getScontrumList();
-    
+
     public ScontrumDetails getScontrumDetails(int scontrumId);
 
     public void closeScontrum(int scontrumId);

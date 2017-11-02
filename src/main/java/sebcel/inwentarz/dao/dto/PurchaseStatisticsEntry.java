@@ -8,25 +8,25 @@ public class PurchaseStatisticsEntry {
     private int number;
 
     public PurchaseStatisticsEntry(String period, int number, double expenses, double value) {
-	this.period = period;
-	this.number = number;
-	this.expenses = expenses;
-	this.value = value;
+        this.period = period;
+        this.number = number;
+        this.expenses = expenses;
+        this.value = value;
     }
 
     public String getPeriod() {
-	return period;
+        return period;
     }
 
     public int getNumber() {
-	return number;
+        return number;
     }
 
     public double getValue() {
-	return value;
+        return value;
     }
 
     public double getExpenses() {
-	return expenses;
+        return expenses;
     }
 }

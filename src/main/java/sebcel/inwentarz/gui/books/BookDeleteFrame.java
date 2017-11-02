@@ -13,25 +13,25 @@ public class BookDeleteFrame extends JDialog implements IBookDeletor {
     private IBookDao bookDao;
 
     public BookDeleteFrame(IBookDao bookDao) {
-	this.bookDao = bookDao;
+        this.bookDao = bookDao;
     }
 
     @Override
     public void deleteBook(int id) {
-	int result = JOptionPane.showConfirmDialog(null, "Czy na pewno chcesz zubytkowaæ tê ksi¹¿kê?", "Ubytkowanie", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-	if (result == JOptionPane.OK_OPTION) {
-	    bookDao.deleteBook(id);
-	}
+        int result = JOptionPane.showConfirmDialog(null, "Czy na pewno chcesz zubytkowaÄ‡ tÄ™ ksiÄ…Å¼kÄ™?", "Ubytkowanie", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            bookDao.deleteBook(id);
+        }
     }
 
     @Override
     public void hardDeleteBook(int id) {
-	int result = JOptionPane.showConfirmDialog(null, "Czy na pewno chcesz skasowaæ tê ksi¹¿kê?", "Kasowanie ksi¹¿ki", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-	if (result == JOptionPane.OK_OPTION) {
-	    result = JOptionPane.showConfirmDialog(null, "Ponownie potwierdŸ kasowanie ksi¹¿ki", "Kasowanie ksi¹¿ki", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-	    if (result == JOptionPane.OK_OPTION) {
-		    bookDao.hardDeleteBook(id);
-	    }
-	}
+        int result = JOptionPane.showConfirmDialog(null, "Czy na pewno chcesz skasowaÄ‡ tÄ™ ksiÄ…Å¼kÄ™?", "Kasowanie ksiÄ…Å¼ki", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            result = JOptionPane.showConfirmDialog(null, "Ponownie potwierdÅº kasowanie ksiÄ…Å¼ki", "Kasowanie ksiÄ…Å¼ki", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (result == JOptionPane.OK_OPTION) {
+                bookDao.hardDeleteBook(id);
+            }
+        }
     }
 }

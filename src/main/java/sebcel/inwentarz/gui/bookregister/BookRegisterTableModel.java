@@ -21,45 +21,45 @@ public class BookRegisterTableModel extends AbstractTableModel {
     private DateFormat df = SimpleDateFormat.getDateTimeInstance();
 
     public BookRegisterTableModel(IBookDao bookDao) {
-	this.bookDao = bookDao;
+        this.bookDao = bookDao;
     }
 
     public int getColumnCount() {
-	return 2;
+        return 2;
     }
 
     public int getRowCount() {
-	return data.size();
+        return data.size();
     }
 
     public String getDescription(int rowIndex) {
-	return data.get(rowIndex).getSzczegoly();
+        return data.get(rowIndex).getSzczegoly();
     }
 
     public Object getValueAt(int rowIndex, int columnIndex) {
-	BookRegisterListElement row = data.get(rowIndex);
-	switch (columnIndex) {
-	case 0:
-	    return df.format(row.getDataOperacji());
-	case 1:
-	    return row.getRodzajOperacji();
-	}
-	return "<b³¹d>";
+        BookRegisterListElement row = data.get(rowIndex);
+        switch (columnIndex) {
+        case 0:
+            return df.format(row.getDataOperacji());
+        case 1:
+            return row.getRodzajOperacji();
+        }
+        return "<bÅ‚Ä…d>";
     }
 
     public void reload(int bookId) {
-	this.data = bookDao.getBookRegisterList(bookId);
+        this.data = bookDao.getBookRegisterList(bookId);
     }
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-	switch (columnIndex) {
-	case 1:
-	    return String.class;
-	case 2:
-	    return String.class;
-	default:
-	    return Object.class;
-	}
+        switch (columnIndex) {
+        case 1:
+            return String.class;
+        case 2:
+            return String.class;
+        default:
+            return Object.class;
+        }
     }
 }

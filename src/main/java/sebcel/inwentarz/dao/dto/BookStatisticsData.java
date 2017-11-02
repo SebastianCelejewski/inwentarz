@@ -12,40 +12,40 @@ public class BookStatisticsData {
     private double totalBooksValue = 0.0;
 
     public BookStatisticsData(int totalBooks, int existingBooks, int notExistingBooks, int availableBooks, int nonAvailableBooks, double totalBooksPrice, double totalBooksValue) {
-	this.totalBooks = totalBooks;
-	this.existingBooks = existingBooks;
-	this.notExistingBooks = notExistingBooks;
-	this.availableBooks = availableBooks;
-	this.nonAvailableBooks = nonAvailableBooks;
-	this.totalBooksPrice = totalBooksPrice;
-	this.totalBooksValue = totalBooksValue;
+        this.totalBooks = totalBooks;
+        this.existingBooks = existingBooks;
+        this.notExistingBooks = notExistingBooks;
+        this.availableBooks = availableBooks;
+        this.nonAvailableBooks = nonAvailableBooks;
+        this.totalBooksPrice = totalBooksPrice;
+        this.totalBooksValue = totalBooksValue;
     }
 
     public int getTotalBooks() {
-	return totalBooks;
+        return totalBooks;
     }
 
     public int getExistingBooks() {
-	return existingBooks;
+        return existingBooks;
     }
 
     public int getNotExistingBooks() {
-	return notExistingBooks;
+        return notExistingBooks;
     }
 
     public int getAvailableBooks() {
-	return availableBooks;
+        return availableBooks;
     }
 
     public int getNonAvailableBooks() {
-	return nonAvailableBooks;
+        return nonAvailableBooks;
     }
 
     public double getTotalBooksPrice() {
-	return totalBooksPrice;
+        return totalBooksPrice;
     }
 
     public double getTotalBooksValue() {
-	return totalBooksValue;
+        return totalBooksValue;
     }
 }

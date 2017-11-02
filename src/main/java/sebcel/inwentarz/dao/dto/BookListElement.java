@@ -15,59 +15,59 @@ public class BookListElement {
     private Boolean verified;
 
     public BookListElement(int id, String autorzy, String tytul, BookStatus status, Date dataWlaczenia, String zrodlo, Double cena, Double wartosc, Boolean verified) {
-	this.id = id;
-	this.autorzy = autorzy;
-	this.tytul = tytul;
-	this.status = status;
-	this.dataWlaczenia = dataWlaczenia;
-	this.zrodlo = zrodlo;
-	this.cena = cena;
-	this.wartosc = wartosc;
-	this.verified = verified;
+        this.id = id;
+        this.autorzy = autorzy;
+        this.tytul = tytul;
+        this.status = status;
+        this.dataWlaczenia = dataWlaczenia;
+        this.zrodlo = zrodlo;
+        this.cena = cena;
+        this.wartosc = wartosc;
+        this.verified = verified;
     }
 
     public int getId() {
-	return id;
+        return id;
     }
 
     public String getAutorzy() {
-	return autorzy;
+        return autorzy;
     }
 
     public String getTytul() {
-	return tytul;
+        return tytul;
     }
 
     public BookStatus getStatus() {
-	return status;
+        return status;
     }
 
     public Date getDataWlaczenia() {
-	return dataWlaczenia;
+        return dataWlaczenia;
     }
 
     public String getZrodlo() {
-	return zrodlo;
+        return zrodlo;
     }
 
     public Double getCena() {
-	return cena;
+        return cena;
     }
 
     public Double getWartosc() {
-	return wartosc;
+        return wartosc;
     }
 
     public void setAutorzy(String autorzy) {
-	this.autorzy = autorzy;
+        this.autorzy = autorzy;
     }
 
     public Boolean isVerified() {
-	return verified;
+        return verified;
     }
 
     public String toString() {
-	return Integer.toString(id) + " " + autorzy + " " + tytul;
+        return Integer.toString(id) + " " + autorzy + " " + tytul;
     }
 
     public void setVerified(Boolean verified) {

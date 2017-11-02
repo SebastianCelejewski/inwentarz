@@ -16,58 +16,58 @@ public class BookCreationData {
     private String uwagi;
 
     public Set<ListElement> getAutorzy() {
-	return autorzy;
+        return autorzy;
     }
 
     public void setAutorzy(Set<ListElement> autorzy) {
-	this.autorzy = autorzy;
+        this.autorzy = autorzy;
     }
 
     public String getTytul() {
-	return tytul;
+        return tytul;
     }
 
     public void setTytul(String tytul) {
-	this.tytul = tytul;
+        this.tytul = tytul;
     }
 
     public Date getDataWlaczenia() {
-	return dataWlaczenia;
+        return dataWlaczenia;
     }
 
     public void setDataWlaczenia(Date dataWlaczenia) {
-	this.dataWlaczenia = dataWlaczenia;
+        this.dataWlaczenia = dataWlaczenia;
     }
 
     public String getZrodloId() {
-	return zrodloId;
+        return zrodloId;
     }
 
     public void setZrodlo(String zrodloId) {
-	this.zrodloId = zrodloId;
+        this.zrodloId = zrodloId;
     }
 
     public Double getCena() {
-	return cena;
+        return cena;
     }
 
     public void setCena(Double cena) {
-	this.cena = cena;
+        this.cena = cena;
     }
 
     public Double getWartosc() {
-	return wartosc;
+        return wartosc;
     }
 
     public void setWartosc(Double wartosc) {
-	this.wartosc = wartosc;
+        this.wartosc = wartosc;
     }
 
     public String getUwagi() {
-	return uwagi;
+        return uwagi;
     }
 
     public void setUwagi(String uwagi) {
-	this.uwagi = uwagi;
+        this.uwagi = uwagi;
     }
 }

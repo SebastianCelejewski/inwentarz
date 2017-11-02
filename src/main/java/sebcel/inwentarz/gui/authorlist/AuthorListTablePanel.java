@@ -23,43 +23,43 @@ public class AuthorListTablePanel extends JPanel {
     private AuthorListTableColumnModel tableColumnModel;
     private TableRowSorter<AuthorListTableModel> sorter;
     private TableCellRenderer cellRenderer = new DefaultTableCellRenderer();
-    
-    public AuthorListTablePanel(IAuthorDao authorDao) {
-	this.setLayout(new BorderLayout());
-	this.setBorder(BorderFactory.createTitledBorder("Lista ksiπøek"));
 
-	tableModel = new AuthorListTableModel(authorDao);
-	tableColumnModel = new AuthorListTableColumnModel();
-	sorter = new TableRowSorter<AuthorListTableModel>(tableModel);
-	table = new ListTable<AuthorListElement>(tableModel, tableColumnModel, sorter, cellRenderer);
-	
-	this.add(table, BorderLayout.CENTER);
-	reload();
+    public AuthorListTablePanel(IAuthorDao authorDao) {
+        this.setLayout(new BorderLayout());
+        this.setBorder(BorderFactory.createTitledBorder("Lista autor√≥w"));
+
+        tableModel = new AuthorListTableModel(authorDao);
+        tableColumnModel = new AuthorListTableColumnModel();
+        sorter = new TableRowSorter<AuthorListTableModel>(tableModel);
+        table = new ListTable<AuthorListElement>(tableModel, tableColumnModel, sorter, cellRenderer);
+
+        this.add(table, BorderLayout.CENTER);
+        reload();
     }
 
     public void reload() {
-	table.reload();
+        table.reload();
     }
-    
+
     public void setFilter(AuthorListFilterModel filter) {
-	final String aNames = filter.getAuthorNameExpression();
-	RowFilter<AuthorListTableModel, Object> rf = new RowFilter<AuthorListTableModel, Object>() {
-	    @Override
-	    public boolean include(javax.swing.RowFilter.Entry<? extends AuthorListTableModel, ? extends Object> entry) {
-		if (aNames != null) {
-		    String autorzy = (String) entry.getValue(2);
-		    if (autorzy.toLowerCase().indexOf(aNames.toLowerCase())==-1) {
-			return false;
-		    }
-		}
-		return true;
-	    }
-	};
-	sorter.setRowFilter(rf);
+        final String aNames = filter.getAuthorNameExpression();
+        RowFilter<AuthorListTableModel, Object> rf = new RowFilter<AuthorListTableModel, Object>() {
+            @Override
+            public boolean include(javax.swing.RowFilter.Entry<? extends AuthorListTableModel, ? extends Object> entry) {
+                if (aNames != null) {
+                    String autorzy = (String) entry.getValue(2);
+                    if (autorzy.toLowerCase().indexOf(aNames.toLowerCase()) == -1) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        };
+        sorter.setRowFilter(rf);
     }
-    
+
     public Collection<Integer> getSelectedAuthors() {
-	return table.getSelectedElementIds();
+        return table.getSelectedElementIds();
     }
 
 }

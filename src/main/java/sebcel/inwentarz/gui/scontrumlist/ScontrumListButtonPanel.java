@@ -25,46 +25,46 @@ public class ScontrumListButtonPanel extends JPanel implements ISelectionListene
     private LifecycleButton<ScontrumStatus> finishCurrentScontrumButton;
 
     public void setScontrumListEventListener(IScontrumListEventListener listener) {
-	this.listener = listener;
+        this.listener = listener;
     }
 
     public ScontrumListButtonPanel(ILifecycleManager<ScontrumStatus> lifecycleManager) {
 
-	viewDetailsButton = new ActionButton<ScontrumStatus>("Szczegó³y", "Szczegó³y skontrum", SelectionRequirement.SINGLE);
-	startNewScontrumButton = new ActionButton<ScontrumStatus>("Rozpocznij", "Rozpoczêcie nowego skontrum", SelectionRequirement.ANY);
-	finishCurrentScontrumButton = new LifecycleButton<ScontrumStatus>("Zakoñcz", "Zakoñczenie trwaj¹cego skontrum", ScontrumStatus.ZAKONCZONE, lifecycleManager);
+        viewDetailsButton = new ActionButton<ScontrumStatus>("SzczegÃ³Å‚y", "SzczegÃ³Å‚y skontrum", SelectionRequirement.SINGLE);
+        startNewScontrumButton = new ActionButton<ScontrumStatus>("Rozpocznij", "RozpoczÄ™cie nowego skontrum", SelectionRequirement.ANY);
+        finishCurrentScontrumButton = new LifecycleButton<ScontrumStatus>("ZakoÅ„cz", "ZakoÅ„czenie trwajÄ…cego skontrum", ScontrumStatus.ZAKONCZONE, lifecycleManager);
 
-	this.setLayout(new GridLayout());
-	this.add(viewDetailsButton);
-	this.add(startNewScontrumButton);
-	this.add(finishCurrentScontrumButton);
+        this.setLayout(new GridLayout());
+        this.add(viewDetailsButton);
+        this.add(startNewScontrumButton);
+        this.add(finishCurrentScontrumButton);
 
-	viewDetailsButton.addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		listener.viewSelectedScontrumDetails();
-	    }
-	});
+        viewDetailsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listener.viewSelectedScontrumDetails();
+            }
+        });
 
-	startNewScontrumButton.addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		listener.startNewScontrum();
-	    }
-	});
+        startNewScontrumButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listener.startNewScontrum();
+            }
+        });
 
-	finishCurrentScontrumButton.addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		listener.finishCurrentScontrum();
-	    }
-	});
+        finishCurrentScontrumButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listener.finishCurrentScontrum();
+            }
+        });
     }
 
     @Override
     public void statusChanged(SelectionStatus<ScontrumStatus> selectionStatus) {
-	viewDetailsButton.statusChanged(selectionStatus);
-	startNewScontrumButton.statusChanged(selectionStatus);
-	finishCurrentScontrumButton.statusChanged(selectionStatus);
+        viewDetailsButton.statusChanged(selectionStatus);
+        startNewScontrumButton.statusChanged(selectionStatus);
+        finishCurrentScontrumButton.statusChanged(selectionStatus);
     }
 }

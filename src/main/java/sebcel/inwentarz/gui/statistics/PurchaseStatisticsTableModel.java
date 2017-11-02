@@ -18,34 +18,34 @@ public class PurchaseStatisticsTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-	return 5;
+        return 5;
     }
 
     @Override
     public int getRowCount() {
-	return data.size();
+        return data.size();
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-	PurchaseStatisticsEntry entry = data.get(rowIndex);
-	switch (columnIndex) {
-	case 0:
-	    return entry.getPeriod() != null ? entry.getPeriod() : "nieznany";
-	case 1:
-	    return entry.getNumber();
-	case 2:
-	    return moneyFormat.format(entry.getExpenses()) + " z≥";
-	case 3:
-	    return moneyFormat.format(entry.getValue()) + " z≥";
-	case 4:
-	    return "";
-	}
-	throw new RuntimeException("Invalid column index: " + columnIndex);
+        PurchaseStatisticsEntry entry = data.get(rowIndex);
+        switch (columnIndex) {
+        case 0:
+            return entry.getPeriod() != null ? entry.getPeriod() : "nieznany";
+        case 1:
+            return entry.getNumber();
+        case 2:
+            return moneyFormat.format(entry.getExpenses()) + " z≈Ç";
+        case 3:
+            return moneyFormat.format(entry.getValue()) + " z≈Ç";
+        case 4:
+            return "";
+        }
+        throw new RuntimeException("Invalid column index: " + columnIndex);
     }
 
     public void setData(List<PurchaseStatisticsEntry> data) {
-	this.data = data;
-	fireTableChanged(new TableModelEvent(this));
+        this.data = data;
+        fireTableChanged(new TableModelEvent(this));
     }
 }

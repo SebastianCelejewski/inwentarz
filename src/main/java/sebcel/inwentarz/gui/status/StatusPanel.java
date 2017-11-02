@@ -14,33 +14,32 @@ public class StatusPanel extends JPanel implements IDataChangeListener {
 
     private IStatisticsDao statisticsDao;
 
-    private JTextField zasobyField;
+    private JTextField resourcesField;
 
     public StatusPanel(IStatisticsDao statisticsDao) {
-	this.statisticsDao = statisticsDao;
-
-	initialize();
+        this.statisticsDao = statisticsDao;
+        initialize();
     }
 
     private void initialize() {
-	this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-	this.zasobyField = new JTextField();
-	this.add(zasobyField);
-	updateZasobyField();
+        this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        this.resourcesField = new JTextField();
+        this.add(resourcesField);
+        updateZasobyField();
     }
 
     private void updateZasobyField() {
-	BookStatisticsData bookStatistics = statisticsDao.getBookStatisticsData();
-	String info = "Liczba ksi¹¿ek ";
-	info += "posiadanych: " + bookStatistics.getExistingBooks() + ", ";
-	info += "dostêpnych: " + bookStatistics.getAvailableBooks() + ", ";
-	info += "wypo¿yczonych: " + bookStatistics.getNonAvailableBooks() + ".";
+        BookStatisticsData bookStatistics = statisticsDao.getBookStatisticsData();
+        String info = "Liczba ksiÄ…Å¼ek ";
+        info += "posiadanych: " + bookStatistics.getExistingBooks() + ", ";
+        info += "dostÄ™pnych: " + bookStatistics.getAvailableBooks() + ", ";
+        info += "wypoÅ¼yczonych: " + bookStatistics.getNonAvailableBooks() + ".";
 
-	zasobyField.setText(info);
+        resourcesField.setText(info);
     }
 
     @Override
     public void dataChanged() {
-	updateZasobyField();
+        updateZasobyField();
     }
 }

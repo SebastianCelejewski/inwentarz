@@ -16,82 +16,82 @@ public class BookDetails {
     private Date dataOstatniejWeryfikacji;
 
     public int getId() {
-	return id;
+        return id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public String getAutorzy() {
-	return autorzy;
+        return autorzy;
     }
 
     public void setAutorzy(String autorzy) {
-	this.autorzy = autorzy;
+        this.autorzy = autorzy;
     }
 
     public String getTytul() {
-	return tytul;
+        return tytul;
     }
 
     public void setTytul(String tytul) {
-	this.tytul = tytul;
+        this.tytul = tytul;
     }
 
     public String getStatus() {
-	return status;
+        return status;
     }
 
     public void setStatus(String status) {
-	this.status = status;
+        this.status = status;
     }
 
     public String getZrodlo() {
-	return zrodlo;
+        return zrodlo;
     }
 
     public void setZrodlo(String zrodlo) {
-	this.zrodlo = zrodlo;
+        this.zrodlo = zrodlo;
     }
 
     public String getUwagi() {
-	return uwagi;
+        return uwagi;
     }
 
     public void setUwagi(String uwagi) {
-	this.uwagi = uwagi;
+        this.uwagi = uwagi;
     }
 
     public Double getCena() {
-	return cena;
+        return cena;
     }
 
     public void setCena(Double cena) {
-	this.cena = cena;
+        this.cena = cena;
     }
 
     public Double getWartosc() {
-	return wartosc;
+        return wartosc;
     }
 
     public void setWartosc(Double wartosc) {
-	this.wartosc = wartosc;
+        this.wartosc = wartosc;
     }
 
     public Date getDataWlaczenia() {
-	return dataWlaczenia;
+        return dataWlaczenia;
     }
 
     public void setDataWlaczenia(Date dataWlaczenia) {
-	this.dataWlaczenia = dataWlaczenia;
+        this.dataWlaczenia = dataWlaczenia;
     }
 
     public Date getDataOstatniejWeryfikacji() {
-	return dataOstatniejWeryfikacji;
+        return dataOstatniejWeryfikacji;
     }
 
     public void setDataOstatniejWeryfikacji(Date dataOstatniejWeryfikacji) {
-	this.dataOstatniejWeryfikacji = dataOstatniejWeryfikacji;
+        this.dataOstatniejWeryfikacji = dataOstatniejWeryfikacji;
     }
 }

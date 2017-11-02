@@ -56,164 +56,166 @@ public class BookEditFrame extends JDialog implements IBookEditor, IBookCreator 
     private JTextArea uwagiBox = new JTextArea();
 
     private JPanel buttonPanel = new JPanel();
-    private JButton acceptButton = new JButton("Zatwierdü");
+    private JButton acceptButton = new JButton("Zatwierd≈∫");
     private JButton cancelButton = new JButton("Anuluj");
 
     private AcceptCancelResult result = AcceptCancelResult.CANCEL;
 
     public BookEditFrame(IBookDao bookDao, IDictionaryDao dictionaryDao, ILifecycleManager<BookStatus> bookLifecycleManager, AuthorsBox authorsBox) {
-	this.authorsBox = authorsBox;
-	this.bookDao = bookDao;
+        this.authorsBox = authorsBox;
+        this.bookDao = bookDao;
 
-	uwagiBox.setLineWrap(true);
-	uwagiBox.setBorder(BorderFactory.createEtchedBorder());
-	
-	uwagiScroll.setViewportView(uwagiBox);
-	
-	this.setLayout(new GridBagLayout());
-	this.setSize(640, 480);
-	GuiTools.centerWindow(this);
+        uwagiBox.setLineWrap(true);
+        uwagiBox.setBorder(BorderFactory.createEtchedBorder());
 
-	addElement("Nr inw.", idBox);
-	addElement("Tytu≥", titleBox);
-	addElement("Autorzy", authorsBox);
-	addElement("Status", statusBox);
-	addElement("Data w≥πczenia", dataWlaczeniaBox);
-	addElement("èrÛd≥o", zrodloBox);
-	addElement("Cena", cenaBox);
-	addElement("WartoúÊ", wartoscBox);
-	addFillElement("Uwagi", uwagiScroll);
+        uwagiScroll.setViewportView(uwagiBox);
 
-	this.add(buttonPanel, new GridBagConstraints(0, y++, 2, 1, 1.0, 0.0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(1, 1, 1, 1), 1, 1));
-	buttonPanel.setLayout(new GridLayout());
-	buttonPanel.add(acceptButton);
-	buttonPanel.add(cancelButton);
+        this.setLayout(new GridBagLayout());
+        this.setSize(640, 480);
+        GuiTools.centerWindow(this);
 
-	acceptButton.addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		result = AcceptCancelResult.ACCEPT;
-		setVisible(false);
-	    }
-	});
+        addElement("Nr inw.", idBox);
+        addElement("Tytu≈Ç", titleBox);
+        addElement("Autorzy", authorsBox);
+        addElement("Status", statusBox);
+        addElement("Data w≈ÇƒÖczenia", dataWlaczeniaBox);
+        addElement("≈πr√≥d≈Ço", zrodloBox);
+        addElement("Cena", cenaBox);
+        addElement("Warto≈õƒá", wartoscBox);
+        addFillElement("Uwagi", uwagiScroll);
 
-	cancelButton.addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		result = AcceptCancelResult.CANCEL;
-		setVisible(false);
-	    }
-	});
+        this.add(buttonPanel, new GridBagConstraints(0, y++, 2, 1, 1.0, 0.0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(1, 1, 1, 1), 1, 1));
+        buttonPanel.setLayout(new GridLayout());
+        buttonPanel.add(acceptButton);
+        buttonPanel.add(cancelButton);
 
-	idBox.setEditable(false);
+        acceptButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                result = AcceptCancelResult.ACCEPT;
+                setVisible(false);
+            }
+        });
 
-	for (BookStatus bookStatus : bookLifecycleManager.getAllStatuses()) {
-	    statusBox.addItem(bookStatus);
-	}
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                result = AcceptCancelResult.CANCEL;
+                setVisible(false);
+            }
+        });
 
-	for (String element : dictionaryDao.getBookSourceList()) {
-	    zrodloBox.addItem(element);
-	}
+        idBox.setEditable(false);
+
+        for (BookStatus bookStatus : bookLifecycleManager.getAllStatuses()) {
+            statusBox.addItem(bookStatus);
+        }
+
+        for (String element : dictionaryDao.getBookSourceList()) {
+            zrodloBox.addItem(element);
+        }
     }
 
     private void addElement(String label, JComponent component) {
-	this.add(new JLabel(label), createLabelConstraints(y));
-	this.add(component, createBoxConstraints(y, GridBagConstraints.HORIZONTAL, 0.0));
-	y++;
+        this.add(new JLabel(label), createLabelConstraints(y));
+        this.add(component, createBoxConstraints(y, GridBagConstraints.HORIZONTAL, 0.0));
+        y++;
     }
-    
+
     private void addFillElement(String label, JComponent component) {
-	this.add(new JLabel(label), createLabelConstraints(y));
-	this.add(component, createBoxConstraints(y, GridBagConstraints.BOTH, 1.0));
-	y++;
+        this.add(new JLabel(label), createLabelConstraints(y));
+        this.add(component, createBoxConstraints(y, GridBagConstraints.BOTH, 1.0));
+        y++;
     }
 
     private GridBagConstraints createLabelConstraints(int y) {
-	return new GridBagConstraints(0, y, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(2, 2, 2, 2), 2, 2);
+        return new GridBagConstraints(0, y, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(2, 2, 2, 2), 2, 2);
     }
 
     private GridBagConstraints createBoxConstraints(int y, int fill, double weightY) {
-	return new GridBagConstraints(1, y, 1, 1, 1.0, weightY, GridBagConstraints.CENTER, fill, new Insets(2, 2, 2, 2), 2, 2);
+        return new GridBagConstraints(1, y, 1, 1, 1.0, weightY, GridBagConstraints.CENTER, fill, new Insets(2, 2, 2, 2), 2, 2);
     }
 
     @Override
     public void editBook(int bookId) {
-	BookEditData bookEditData = bookDao.getBookEditData(bookId);
+        BookEditData bookEditData = bookDao.getBookEditData(bookId);
 
-	idBox.setText(Integer.toString(bookEditData.getId()));
-	authorsBox.setAuthors(bookEditData.getAutorzy());
-	titleBox.setText(bookEditData.getTytul());
-	cenaBox.setValue(bookEditData.getCena());
-	wartoscBox.setValue(bookEditData.getWartosc());
-	dataWlaczeniaBox.setValue(bookEditData.getDataWlaczenia());
-	zrodloBox.setSelectedItem(bookEditData.getZrodloId());
-	statusBox.setSelectedItem(bookEditData.getStatus());
-	uwagiBox.setText(bookEditData.getUwagi());
-	uwagiBox.setCaretPosition(0);
-	
-	authorsBox.invalidate();
-	titleBox.grabFocus();
-	this.setTitle("Edycja ksiπøki");
-	this.setModal(true);
-	this.setVisible(true);
+        idBox.setText(Integer.toString(bookEditData.getId()));
+        authorsBox.setAuthors(bookEditData.getAutorzy());
+        titleBox.setText(bookEditData.getTytul());
+        cenaBox.setValue(bookEditData.getCena());
+        wartoscBox.setValue(bookEditData.getWartosc());
+        dataWlaczeniaBox.setValue(bookEditData.getDataWlaczenia());
+        zrodloBox.setSelectedItem(bookEditData.getZrodloId());
+        statusBox.setSelectedItem(bookEditData.getStatus());
+        uwagiBox.setText(bookEditData.getUwagi());
+        uwagiBox.setCaretPosition(0);
 
-	if (result == AcceptCancelResult.ACCEPT) {
+        authorsBox.invalidate();
+        titleBox.grabFocus();
+        this.setTitle("Edycja ksiƒÖ≈ºki");
+        this.setModal(true);
+        this.setVisible(true);
 
-	    BookEditData modifiedEditData = new BookEditData();
+        if (result == AcceptCancelResult.ACCEPT) {
 
-	    modifiedEditData.setId(bookEditData.getId());
-	    modifiedEditData.setAutorzy(authorsBox.getAuthors());
-	    modifiedEditData.setTytul(titleBox.getText());
-	    modifiedEditData.setCena(cenaBox.getValue());
-	    modifiedEditData.setWartosc(wartoscBox.getValue());
-	    modifiedEditData.setDataWlaczenia(dataWlaczeniaBox.getValue());
-	    modifiedEditData.setZrodlo((String) zrodloBox.getSelectedItem());
-	    modifiedEditData.setStatus((BookStatus) statusBox.getSelectedItem());
-	    modifiedEditData.setUwagi(uwagiBox.getText());
+            BookEditData modifiedEditData = new BookEditData();
 
-	    if (modifiedEditData.getStatus() != bookEditData.getStatus()) {
-		int result = JOptionPane.showConfirmDialog(null, "Zmieniasz status ksiπøki. Czy robisz to úwiadomie? Jeúli ksiπøka jest faktycznie wypoøyczana, zwracana, ubytkowana lub ca≥kowicie kasowana, naleøy uøyÊ przyciskÛw na liúcie ksiπøek.", "Zmiana statusu ksiπøki", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-		if (result != JOptionPane.OK_OPTION) {
-		    setVisible(true);
-		    return;
-		} 
-	    }
+            modifiedEditData.setId(bookEditData.getId());
+            modifiedEditData.setAutorzy(authorsBox.getAuthors());
+            modifiedEditData.setTytul(titleBox.getText());
+            modifiedEditData.setCena(cenaBox.getValue());
+            modifiedEditData.setWartosc(wartoscBox.getValue());
+            modifiedEditData.setDataWlaczenia(dataWlaczeniaBox.getValue());
+            modifiedEditData.setZrodlo((String) zrodloBox.getSelectedItem());
+            modifiedEditData.setStatus((BookStatus) statusBox.getSelectedItem());
+            modifiedEditData.setUwagi(uwagiBox.getText());
 
-	    bookDao.updateBook(modifiedEditData);
-	}
+            if (modifiedEditData.getStatus() != bookEditData.getStatus()) {
+                int result = JOptionPane.showConfirmDialog(null,
+                        "Zmieniasz status ksiƒÖ≈ºki. Czy robisz to ≈õwiadomie? Je≈õli ksiƒÖ≈ºka jest faktycznie wypo≈ºyczana, zwracana, ubytkowana lub ca≈Çkowicie kasowana, nale≈ºy u≈ºyƒá przycisk√≥w na li≈õcie ksiƒÖ≈ºek.", "Zmiana statusu ksi¬π¬øki",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (result != JOptionPane.OK_OPTION) {
+                    setVisible(true);
+                    return;
+                }
+            }
+
+            bookDao.updateBook(modifiedEditData);
+        }
     }
 
     @Override
     public Integer createBook() {
-	idBox.setText("");
-	authorsBox.setAuthors(new HashSet<ListElement>());
-	titleBox.setText("");
-	cenaBox.setValue(null);
-	wartoscBox.setValue(null);
-	dataWlaczeniaBox.setValue(Calendar.getInstance().getTime());
-	zrodloBox.setSelectedIndex(0);
-	statusBox.setSelectedIndex(0);
-	uwagiBox.setText("");
+        idBox.setText("");
+        authorsBox.setAuthors(new HashSet<ListElement>());
+        titleBox.setText("");
+        cenaBox.setValue(null);
+        wartoscBox.setValue(null);
+        dataWlaczeniaBox.setValue(Calendar.getInstance().getTime());
+        zrodloBox.setSelectedIndex(0);
+        statusBox.setSelectedIndex(0);
+        uwagiBox.setText("");
 
-	this.setTitle("Dodawanie nowej ksiπøki");
-	this.invalidate();
-	this.setModal(true);
-	this.setVisible(true);
+        this.setTitle("Dodawanie nowej ksiƒÖ≈ºki");
+        this.invalidate();
+        this.setModal(true);
+        this.setVisible(true);
 
-	if (result == AcceptCancelResult.ACCEPT) {
-	    BookCreationData bookCreationData = new BookCreationData();
+        if (result == AcceptCancelResult.ACCEPT) {
+            BookCreationData bookCreationData = new BookCreationData();
 
-	    bookCreationData.setAutorzy(authorsBox.getAuthors());
-	    bookCreationData.setTytul(titleBox.getText());
-	    bookCreationData.setCena(cenaBox.getValue());
-	    bookCreationData.setWartosc(wartoscBox.getValue());
-	    bookCreationData.setDataWlaczenia(dataWlaczeniaBox.getValue());
-	    bookCreationData.setZrodlo((String) zrodloBox.getSelectedItem());
-	    bookCreationData.setUwagi(uwagiBox.getText());
+            bookCreationData.setAutorzy(authorsBox.getAuthors());
+            bookCreationData.setTytul(titleBox.getText());
+            bookCreationData.setCena(cenaBox.getValue());
+            bookCreationData.setWartosc(wartoscBox.getValue());
+            bookCreationData.setDataWlaczenia(dataWlaczeniaBox.getValue());
+            bookCreationData.setZrodlo((String) zrodloBox.getSelectedItem());
+            bookCreationData.setUwagi(uwagiBox.getText());
 
-	    return bookDao.createBook(bookCreationData);
-	} else {
-	    return null;
-	}
+            return bookDao.createBook(bookCreationData);
+        } else {
+            return null;
+        }
     }
 }

@@ -16,7 +16,7 @@ public interface IBookDao {
     public String getAuthorNamesForBook(int bookId);
 
     public BookEditData getBookEditData(int bookId);
-    
+
     public BookDetails getBookDetails(int bookId);
 
     public int createBook(BookCreationData bookCreationData);
@@ -34,7 +34,7 @@ public interface IBookDao {
     public void deleteBook(int bookId);
 
     public void hardDeleteBook(int id);
-    
+
     public void verifyBookExistence(int id);
 
     public boolean getBookVerification(int id);

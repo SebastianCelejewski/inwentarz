@@ -18,21 +18,21 @@ public class ScontrumListTableCellRenderer extends DefaultTableCellRenderer {
     private Map<ScontrumStatus, Color> colors = new HashMap<ScontrumStatus, Color>();
 
     public ScontrumListTableCellRenderer(ScontrumListTableModel tableModel) {
-	this.tableModel = tableModel;
-	colors.put(ScontrumStatus.ROZPOCZETE, Color.RED);
-	colors.put(ScontrumStatus.ZAKONCZONE, Color.BLACK);
+        this.tableModel = tableModel;
+        colors.put(ScontrumStatus.ROZPOCZETE, Color.RED);
+        colors.put(ScontrumStatus.ZAKONCZONE, Color.BLACK);
     }
 
     public Component getTableCellRendererComponent(JTable aTable, Object aNumberValue, boolean aIsSelected, boolean aHasFocus, int aRow, int aColumn) {
-	if (aNumberValue == null) {
-	    this.setForeground(Color.BLACK);
-	    this.setValue(null);
-	}
-	Component renderer = super.getTableCellRendererComponent(aTable, aNumberValue, aIsSelected, aHasFocus, aRow, aColumn);
+        if (aNumberValue == null) {
+            this.setForeground(Color.BLACK);
+            this.setValue(null);
+        }
+        Component renderer = super.getTableCellRendererComponent(aTable, aNumberValue, aIsSelected, aHasFocus, aRow, aColumn);
 
-	ScontrumStatus bookStatus = tableModel.getElementAt(aTable.convertRowIndexToModel(aRow)).getStatus();
-	Color color = colors.get(bookStatus);
-	renderer.setForeground(color);
-	return this;
+        ScontrumStatus bookStatus = tableModel.getElementAt(aTable.convertRowIndexToModel(aRow)).getStatus();
+        Color color = colors.get(bookStatus);
+        renderer.setForeground(color);
+        return this;
     }
 }

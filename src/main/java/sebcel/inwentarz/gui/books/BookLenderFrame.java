@@ -13,14 +13,14 @@ public class BookLenderFrame extends JDialog implements IBookLender {
     private IBookDao bookDao;
 
     public BookLenderFrame(IBookDao bookDao) {
-	this.bookDao = bookDao;
+        this.bookDao = bookDao;
     }
 
     @Override
     public void lendBook(int id) {
-	int result = JOptionPane.showConfirmDialog(null, "PotwierdŸ operacjê wypo¿yczenia ksi¹¿ki", "Wypo¿yczenie ksi¹¿ki", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-	if (result == JOptionPane.OK_OPTION) {
-	    bookDao.lendBook(id);
-	}
+        int result = JOptionPane.showConfirmDialog(null, "PotwierdÅº operacjÄ™ wypoÅ¼yczenia ksiÄ…Å¼ki", "WypoÅ¼yczenie ksiÄ…Å¼ki", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            bookDao.lendBook(id);
+        }
     }
 }

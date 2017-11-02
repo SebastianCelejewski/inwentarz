@@ -2,15 +2,15 @@ package sebcel.inwentarz.dao.dto;
 
 public enum ScontrumStatus {
 
-    ROZPOCZETE("Rozpoczête"), ZAKONCZONE("Zakoñczone");
+    ROZPOCZETE("RozpoczÄ™te"), ZAKONCZONE("ZakoÅ„czone");
 
     private String name;
 
     ScontrumStatus(String name) {
-	this.name = name;
+        this.name = name;
     }
 
     public String getName() {
-	return name;
+        return name;
     }
 }

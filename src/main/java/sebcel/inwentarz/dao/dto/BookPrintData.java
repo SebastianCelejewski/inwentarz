@@ -10,34 +10,34 @@ public class BookPrintData {
     private Date dataWlaczenia;
 
     public int getId() {
-	return id;
+        return id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public String getAutorzy() {
-	return autorzy;
+        return autorzy;
     }
 
     public void setAutorzy(String autorzy) {
-	this.autorzy = autorzy;
+        this.autorzy = autorzy;
     }
 
     public String getTytul() {
-	return tytul;
+        return tytul;
     }
 
     public void setTytul(String tytul) {
-	this.tytul = tytul;
+        this.tytul = tytul;
     }
 
     public Date getDataWlaczenia() {
-	return dataWlaczenia;
+        return dataWlaczenia;
     }
 
     public void setDataWlaczenia(Date dataWlaczenia) {
-	this.dataWlaczenia = dataWlaczenia;
+        this.dataWlaczenia = dataWlaczenia;
     }
 }

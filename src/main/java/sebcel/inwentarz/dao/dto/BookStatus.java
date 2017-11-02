@@ -2,36 +2,36 @@ package sebcel.inwentarz.dao.dto;
 
 public enum BookStatus {
 
-    DOSTEPNA(0, "Dostêpna"), WYPOZYCZONA(1, "Wypo¿yczona"), WYCOFANA(2, "Wycofana"), USUNIETA(99, "Usuniêta");
+    DOSTEPNA(0, "DostÄ™pna"), WYPOZYCZONA(1, "WypoÅ¼yczona"), WYCOFANA(2, "Wycofana"), USUNIETA(99, "UsuniÄ™ta");
 
     private int id;
     private String name;
 
     BookStatus(int id, String name) {
-	this.id = id;
-	this.name = name;
+        this.id = id;
+        this.name = name;
     }
 
     public int getId() {
-	return id;
+        return id;
     }
 
     public String getName() {
-	return name;
+        return name;
     }
 
     public static BookStatus parse(int statusId) {
-	BookStatus[] values = BookStatus.values();
-	for (int i = 0; i < values.length; i++) {
-	    if (values[i].getId() == statusId) {
-		return values[i];
-	    }
-	}
-	throw new RuntimeException("Invalid status id: " + statusId);
+        BookStatus[] values = BookStatus.values();
+        for (int i = 0; i < values.length; i++) {
+            if (values[i].getId() == statusId) {
+                return values[i];
+            }
+        }
+        throw new RuntimeException("Invalid status id: " + statusId);
     }
 
     @Override
     public String toString() {
-	return name;
+        return name;
     }
 }

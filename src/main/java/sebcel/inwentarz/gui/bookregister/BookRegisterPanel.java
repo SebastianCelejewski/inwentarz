@@ -27,39 +27,39 @@ public class BookRegisterPanel extends JPanel {
     private JPanel detailsPanel = new JPanel();
 
     public BookRegisterPanel(IBookDao bookDao) {
-	tableModel = new BookRegisterTableModel(bookDao);
-	scrollPane.setViewportView(table);
+        tableModel = new BookRegisterTableModel(bookDao);
+        scrollPane.setViewportView(table);
 
-	details.setEditable(false);
-	details.setLineWrap(true);
+        details.setEditable(false);
+        details.setLineWrap(true);
 
-	detailsPanel.setLayout(new BorderLayout());
-	detailsPanel.add(details, BorderLayout.CENTER);
-	detailsPanel.setBorder(BorderFactory.createTitledBorder("Szczeg�y operacji"));
+        detailsPanel.setLayout(new BorderLayout());
+        detailsPanel.add(details, BorderLayout.CENTER);
+        detailsPanel.setBorder(BorderFactory.createTitledBorder("Szczegóły operacji"));
 
-	this.setLayout(new GridLayout());
-	this.add(scrollPane);
-	this.add(detailsPanel);
+        this.setLayout(new GridLayout());
+        this.add(scrollPane);
+        this.add(detailsPanel);
 
-	table.setModel(tableModel);
-	table.setColumnModel(columnModel);
-	table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-	table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-	    @Override
-	    public void valueChanged(ListSelectionEvent e) {
-		int selectedRow = table.getSelectedRow();
-		if (selectedRow > -1) {
-		    details.setText(tableModel.getDescription(selectedRow));
-		}
-	    }
-	});
+        table.setModel(tableModel);
+        table.setColumnModel(columnModel);
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                int selectedRow = table.getSelectedRow();
+                if (selectedRow > -1) {
+                    details.setText(tableModel.getDescription(selectedRow));
+                }
+            }
+        });
     }
 
     public void reload(int bookId) {
-	System.out.println("[BookRegisterPanel][Reload] id=" + bookId);
-	tableModel.reload(bookId);
-	table.getSelectionModel().clearSelection();
-	details.setText("");
-	table.invalidate();
+        System.out.println("[BookRegisterPanel][Reload] id=" + bookId);
+        tableModel.reload(bookId);
+        table.getSelectionModel().clearSelection();
+        details.setText("");
+        table.invalidate();
     }
 }

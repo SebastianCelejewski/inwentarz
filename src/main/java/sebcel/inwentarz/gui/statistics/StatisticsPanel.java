@@ -20,25 +20,25 @@ public class StatisticsPanel extends JPanel {
     private PurchaseStaticticsTable purchaseStatisticsTable = new PurchaseStaticticsTable();
 
     public StatisticsPanel(IStatisticsDao statisticsDao) {
-	this.statisticsDao = statisticsDao;
-	this.setLayout(new BorderLayout());
-	this.add(bookStatisticsPanel, BorderLayout.NORTH);
-	this.add(purchaseStatisticsTable, BorderLayout.CENTER);
+        this.statisticsDao = statisticsDao;
+        this.setLayout(new BorderLayout());
+        this.add(bookStatisticsPanel, BorderLayout.NORTH);
+        this.add(purchaseStatisticsTable, BorderLayout.CENTER);
 
-	this.addComponentListener(new ComponentAdapter() {
-	    @Override
-	    public void componentShown(ComponentEvent e) {
-		refresh();
-	    }
-	});
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentShown(ComponentEvent e) {
+                refresh();
+            }
+        });
     }
 
     private void refresh() {
-	BookStatisticsData statisticsData = statisticsDao.getBookStatisticsData();
-	bookStatisticsPanel.setData(statisticsData);
+        BookStatisticsData statisticsData = statisticsDao.getBookStatisticsData();
+        bookStatisticsPanel.setData(statisticsData);
 
-	PurchaseStatistics purchaseStatistics = statisticsDao.getPurchaseStatistics();
-	purchaseStatisticsTable.setData(purchaseStatistics);
+        PurchaseStatistics purchaseStatistics = statisticsDao.getPurchaseStatistics();
+        purchaseStatisticsTable.setData(purchaseStatistics);
 
     }
 }

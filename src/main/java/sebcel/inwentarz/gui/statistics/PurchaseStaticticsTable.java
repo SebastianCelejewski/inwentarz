@@ -19,15 +19,15 @@ public class PurchaseStaticticsTable extends JPanel {
     private PurchaseStatisticsTableColumnModel columnModel = new PurchaseStatisticsTableColumnModel();
 
     public PurchaseStaticticsTable() {
-	this.setLayout(new BorderLayout());
-	this.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Statystyka zakupów"));
-	this.add(scroll, BorderLayout.CENTER);
-	this.scroll.setViewportView(table);
-	this.table.setModel(tableModel);
-	this.table.setColumnModel(columnModel);
+        this.setLayout(new BorderLayout());
+        this.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Statystyka zakupï¿½w"));
+        this.add(scroll, BorderLayout.CENTER);
+        this.scroll.setViewportView(table);
+        this.table.setModel(tableModel);
+        this.table.setColumnModel(columnModel);
     }
 
     public void setData(PurchaseStatistics purchaseStatistics) {
-	tableModel.setData(purchaseStatistics.getEntries());
+        tableModel.setData(purchaseStatistics.getEntries());
     }
 }

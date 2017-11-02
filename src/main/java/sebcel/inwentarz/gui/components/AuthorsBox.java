@@ -31,66 +31,66 @@ public class AuthorsBox extends JComponent {
 
     private IAuthorPicker authorPicker;
     private Font f = new Font("Times", Font.PLAIN, 10);
-    
+
     public AuthorsBox(IAuthorPicker authorPicker) {
-	this.authorPicker = authorPicker;
+        this.authorPicker = authorPicker;
 
-	addButton.setFont(f);
-	addButton.setMargin(new Insets(0,0,0,0));
-	addButton.setToolTipText("Dodaj autora do listy autorów ksi¹¿ki");
-	
-	removeButton.setFont(f);
-	removeButton.setMargin(new Insets(0,0,0,0));
-	removeButton.setToolTipText("Usuñ zaznaczonego autora z listy autorów ksi¹¿ki");
-	
-	this.setLayout(new BorderLayout());
-	this.setBorder(BorderFactory.createEtchedBorder());
+        addButton.setFont(f);
+        addButton.setMargin(new Insets(0, 0, 0, 0));
+        addButton.setToolTipText("Dodaj autora do listy autorÃ³w ksiÄ…Å¼ki");
 
-	authorList.setModel(listModel);
-	buttonPanel.setLayout(new BoxLayout(buttonPanel, 0));
-	
-	this.add(authorList, BorderLayout.CENTER);
-	this.add(buttonPanel, BorderLayout.SOUTH);
+        removeButton.setFont(f);
+        removeButton.setMargin(new Insets(0, 0, 0, 0));
+        removeButton.setToolTipText("UsuÅ„ zaznaczonego autora z listy autorÃ³w ksiÄ…Å¼ki");
 
-	buttonPanel.add(addButton);
-	buttonPanel.add(removeButton);
+        this.setLayout(new BorderLayout());
+        this.setBorder(BorderFactory.createEtchedBorder());
 
-	addButton.addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		addAuthor();
-	    }
-	});
+        authorList.setModel(listModel);
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, 0));
 
-	removeButton.addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		removeAuthor();
-	    }
-	});
+        this.add(authorList, BorderLayout.CENTER);
+        this.add(buttonPanel, BorderLayout.SOUTH);
+
+        buttonPanel.add(addButton);
+        buttonPanel.add(removeButton);
+
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addAuthor();
+            }
+        });
+
+        removeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeAuthor();
+            }
+        });
     }
 
     public void setAuthors(Set<ListElement> authors) {
-	listModel.setData(authors);
+        listModel.setData(authors);
     }
 
     public Set<ListElement> getAuthors() {
-	return listModel.getData();
+        return listModel.getData();
     }
 
     private void addAuthor() {
-	List<ListElement> newAuthors = authorPicker.selectAuthors();
-	for (ListElement newAuthor : newAuthors) {
-	    listModel.add(newAuthor);
-	}
+        List<ListElement> newAuthors = authorPicker.selectAuthors();
+        for (ListElement newAuthor : newAuthors) {
+            listModel.add(newAuthor);
+        }
     }
 
     private void removeAuthor() {
-	Object[] selectedAuthors = authorList.getSelectedValues();
-	if (selectedAuthors != null) {
-	    for (Object selectedAuthor : selectedAuthors) {
-		listModel.remove((ListElement) selectedAuthor);
-	    }
-	}
+        Object[] selectedAuthors = authorList.getSelectedValues();
+        if (selectedAuthors != null) {
+            for (Object selectedAuthor : selectedAuthors) {
+                listModel.remove((ListElement) selectedAuthor);
+            }
+        }
     }
 }

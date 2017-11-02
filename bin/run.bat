@@ -1,1 +1,1 @@
-javaw -jar -splash:splash.jpeg inwentarz-1.2.5.jar
+javaw -jar -splash:splash.jpeg inwentarz-1.2.6.jar

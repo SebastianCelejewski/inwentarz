@@ -13,14 +13,14 @@ public class BookReturnFrame extends JDialog implements IBookReturner {
     private IBookDao bookDao;
 
     public BookReturnFrame(IBookDao bookDao) {
-	this.bookDao = bookDao;
+        this.bookDao = bookDao;
     }
 
     @Override
     public void returnBook(int id) {
-	int result = JOptionPane.showConfirmDialog(null, "PotwierdŸ operacjê zwrotu ksi¹¿ki", "Zwrot ksi¹¿ki", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-	if (result == JOptionPane.OK_OPTION) {
-	    bookDao.returnBook(id);
-	}
+        int result = JOptionPane.showConfirmDialog(null, "PotwierdÅº operacjÄ™ zwrotu ksiÄ…Å¼ki", "Zwrot ksiÄ…Å¼ki", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            bookDao.returnBook(id);
+        }
     }
 }

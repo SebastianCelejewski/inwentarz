@@ -41,62 +41,62 @@ public class ScontrumViewFrame extends JDialog implements IScontrumViewer {
     private JButton closeButton = new JButton("Zamknij");
 
     public ScontrumViewFrame(IScontrumDao scontrumDao) {
-	this.scontrumDao = scontrumDao;
+        this.scontrumDao = scontrumDao;
 
-	this.setLayout(new GridBagLayout());
-	this.setSize(640, 480);
-	GuiTools.centerWindow(this);
+        this.setLayout(new GridBagLayout());
+        this.setSize(640, 480);
+        GuiTools.centerWindow(this);
 
-	addElement("Numer", id);
-	addElement("Data rozpoczêcia", dataRozpoczecia);
-	addElement("Data zakoñczenia", dataZakonczenia);
-	addElement("Status", status);
-	addElement("Liczba posiadanych ksi¹¿ek", liczbaPosiadanychKsiazek);
-	addElement("Liczba zweryfikowanych ksi¹¿ek", liczbaZweryfikowanychKsiazek);
-	addElement("Liczba niezweryfikowanych ksi¹¿ek", liczbaNiezweryfikowanychKsiazek);
+        addElement("Numer", id);
+        addElement("Data rozpoczÄ™cia", dataRozpoczecia);
+        addElement("Data zakoÅ„czenia", dataZakonczenia);
+        addElement("Status", status);
+        addElement("Liczba posiadanych ksiÄ…Å¼ek", liczbaPosiadanychKsiazek);
+        addElement("Liczba zweryfikowanych ksiÄ…Å¼ek", liczbaZweryfikowanychKsiazek);
+        addElement("Liczba niezweryfikowanych ksiÄ…Å¼ek", liczbaNiezweryfikowanychKsiazek);
 
-	this.add(buttonPanel, new GridBagConstraints(0, y++, 2, 1, 1.0, 0.0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(1, 1, 1, 1), 1, 1));
-	buttonPanel.setLayout(new GridLayout());
-	buttonPanel.add(closeButton);
+        this.add(buttonPanel, new GridBagConstraints(0, y++, 2, 1, 1.0, 0.0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(1, 1, 1, 1), 1, 1));
+        buttonPanel.setLayout(new GridLayout());
+        buttonPanel.add(closeButton);
 
-	closeButton.addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		setVisible(false);
-	    }
-	});
+        closeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+            }
+        });
     }
 
     @Override
     public void viewScontrum(int scontrumId) {
-	ScontrumDetails details = scontrumDao.getScontrumDetails(scontrumId);
+        ScontrumDetails details = scontrumDao.getScontrumDetails(scontrumId);
 
-	id.setValue(details.getId());
-	dataRozpoczecia.setDate(details.getDataRozpoczecia());
-	dataZakonczenia.setDate(details.getDataZakonczenia());
-	status.setText(details.getStatus().getName());
-	liczbaPosiadanychKsiazek.setValue(details.getLiczbaPosiadanychKsiazek());
-	liczbaZweryfikowanychKsiazek.setValue(details.getLiczbaZweryfikowanychKsiazek());
-	liczbaNiezweryfikowanychKsiazek.setValue(details.getLiczbaNiezweryfikowanychKsiazek());
+        id.setValue(details.getId());
+        dataRozpoczecia.setDate(details.getDataRozpoczecia());
+        dataZakonczenia.setDate(details.getDataZakonczenia());
+        status.setText(details.getStatus().getName());
+        liczbaPosiadanychKsiazek.setValue(details.getLiczbaPosiadanychKsiazek());
+        liczbaZweryfikowanychKsiazek.setValue(details.getLiczbaZweryfikowanychKsiazek());
+        liczbaNiezweryfikowanychKsiazek.setValue(details.getLiczbaNiezweryfikowanychKsiazek());
 
-	this.setTitle("Szczegó³y skontrum");
-	this.setModal(true);
-	this.pack();
-	this.setVisible(true);
+        this.setTitle("SzczegÃ³Å‚y skontrum");
+        this.setModal(true);
+        this.pack();
+        this.setVisible(true);
     }
 
     private void addElement(String label, JTextComponent component) {
-	this.add(new JLabel(label), createLabelConstraints(y));
-	this.add(component, createBoxConstraints(y, GridBagConstraints.HORIZONTAL, 0.0));
-	component.setEditable(false);
-	y++;
+        this.add(new JLabel(label), createLabelConstraints(y));
+        this.add(component, createBoxConstraints(y, GridBagConstraints.HORIZONTAL, 0.0));
+        component.setEditable(false);
+        y++;
     }
 
     private GridBagConstraints createLabelConstraints(int y) {
-	return new GridBagConstraints(0, y, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(2, 2, 2, 2), 2, 2);
+        return new GridBagConstraints(0, y, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(2, 2, 2, 2), 2, 2);
     }
 
     private GridBagConstraints createBoxConstraints(int y, int fill, double weightY) {
-	return new GridBagConstraints(1, y, 1, 1, 1.0, weightY, GridBagConstraints.CENTER, fill, new Insets(2, 2, 2, 2), 2, 2);
+        return new GridBagConstraints(1, y, 1, 1, 1.0, weightY, GridBagConstraints.CENTER, fill, new Insets(2, 2, 2, 2), 2, 2);
     }
 }

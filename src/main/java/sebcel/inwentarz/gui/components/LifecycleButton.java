@@ -13,18 +13,18 @@ public class LifecycleButton<T> extends JButton implements ISelectionListener<T>
     private ILifecycleManager<T> lifecycleManager;
 
     public LifecycleButton(String text, String toolTip, T destinationStatus, ILifecycleManager<T> lifecycleManager) {
-	super(text);
-	super.setToolTipText(toolTip);
-	this.destinationStatus = destinationStatus;
-	this.lifecycleManager = lifecycleManager;
+        super(text);
+        super.setToolTipText(toolTip);
+        this.destinationStatus = destinationStatus;
+        this.lifecycleManager = lifecycleManager;
     }
 
     @Override
     public void statusChanged(SelectionStatus<T> selectionStatus) {
-	if (selectionStatus.getNumberOfSelectedElements() != 1) {
-	    this.setEnabled(false);
-	} else {
-	    this.setEnabled(lifecycleManager.getAllowedTransitions(selectionStatus.getStatus()).contains(destinationStatus));
-	}
+        if (selectionStatus.getNumberOfSelectedElements() != 1) {
+            this.setEnabled(false);
+        } else {
+            this.setEnabled(lifecycleManager.getAllowedTransitions(selectionStatus.getStatus()).contains(destinationStatus));
+        }
     }
 }

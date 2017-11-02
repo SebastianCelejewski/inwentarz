@@ -8,7 +8,6 @@ public class StatusComparator implements Comparator<BookStatus> {
 
     @Override
     public int compare(BookStatus o1, BookStatus o2) {
-	int i = 3;
-	return o1.compareTo(o2);
+        return o1.compareTo(o2);
     }
 }

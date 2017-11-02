@@ -8,10 +8,10 @@ public class PurchaseStatistics {
     private List<PurchaseStatisticsEntry> entries = new ArrayList<PurchaseStatisticsEntry>();
 
     public List<PurchaseStatisticsEntry> getEntries() {
-	return entries;
+        return entries;
     }
 
     public void add(PurchaseStatisticsEntry entry) {
-	entries.add(entry);
+        entries.add(entry);
     }
 }

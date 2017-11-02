@@ -11,24 +11,24 @@ public class ComparatorFactory implements IComparatorFactory {
     private DateComparator dateComparator = new DateComparator();
     private PriceComparator priceComparator = new PriceComparator();
     private StatusComparator statusComparator = new StatusComparator();
-    
+
     @Override
     public Comparator<String> getAuthorComparator() {
-	return authorComparator;
+        return authorComparator;
     }
 
     @Override
     public Comparator<BookStatus> getBookStatusComparator() {
-	return statusComparator;
+        return statusComparator;
     }
 
     @Override
     public Comparator<Date> getDateComparator() {
-	return dateComparator;
+        return dateComparator;
     }
 
     @Override
     public Comparator<Object> getPriceComparator() {
-	return priceComparator;
+        return priceComparator;
     }
 }

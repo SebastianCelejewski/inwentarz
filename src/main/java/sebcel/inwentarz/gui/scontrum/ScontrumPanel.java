@@ -22,38 +22,38 @@ public class ScontrumPanel extends JPanel implements IDataChangeListener {
     private ScontrumListPanel listPanel;
 
     public ScontrumPanel(IScontrumDao scontrumDao, IComparatorFactory comparatorFactory, ScontrumListPanel listPanel) {
-	this.scontrumDao = scontrumDao;
-	this.infoPanel = new ScontrumInfoPanel();
-	this.listPanel = listPanel;
+        this.scontrumDao = scontrumDao;
+        this.infoPanel = new ScontrumInfoPanel();
+        this.listPanel = listPanel;
 
-	initialize();
+        initialize();
     }
 
     private void initialize() {
-	this.setLayout(new BorderLayout());
-	this.add(infoPanel, BorderLayout.NORTH);
-	this.add(listPanel, BorderLayout.CENTER);
+        this.setLayout(new BorderLayout());
+        this.add(infoPanel, BorderLayout.NORTH);
+        this.add(listPanel, BorderLayout.CENTER);
 
-	this.addComponentListener(new ComponentAdapter() {
-	    @Override
-	    public void componentShown(ComponentEvent e) {
-		refresh();
-	    }
-	});
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentShown(ComponentEvent e) {
+                refresh();
+            }
+        });
     }
 
     protected void refresh() {
-	if (scontrumDao.isScontrumOpen()) {
-	    int scontrumId = scontrumDao.getOpenScontrumId();
-	    ScontrumStatisticsData data = scontrumDao.getScontrumStatistics(scontrumId);
-	    infoPanel.setData(data);
-	} else {
-	    infoPanel.setData(null);
-	}
+        if (scontrumDao.isScontrumOpen()) {
+            int scontrumId = scontrumDao.getOpenScontrumId();
+            ScontrumStatisticsData data = scontrumDao.getScontrumStatistics(scontrumId);
+            infoPanel.setData(data);
+        } else {
+            infoPanel.setData(null);
+        }
     }
 
     @Override
     public void dataChanged() {
-	refresh();
+        refresh();
     }
 }
