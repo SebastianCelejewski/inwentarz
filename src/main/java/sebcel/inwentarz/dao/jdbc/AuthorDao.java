@@ -3,6 +3,7 @@ package sebcel.inwentarz.dao.jdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,12 +85,12 @@ public class AuthorDao implements IAuthorDao {
     @Override
     public int createAuthor(AuthorCreationData authorCreationData) {
         try {
-            Statement statement = connectionFactory.getConnection().createStatement();
             String query = "insert into autorzy (imiona, nazwisko) values";
             query += "('" + authorCreationData.getImiona() + "', ";
             query += "'" + authorCreationData.getNazwisko() + "')";
             System.out.println("SQL: " + query);
-            statement.execute(query);
+            PreparedStatement statement = connectionFactory.getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.executeUpdate();
 
             ResultSet keys = statement.getGeneratedKeys();
             keys.next();

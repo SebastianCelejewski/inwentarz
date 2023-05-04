@@ -63,7 +63,7 @@ public class MainFrame extends JFrame {
 
     private static final long serialVersionUID = 3646966981291881166L;
     private static final Image icon = new ImageIcon("inwentarz.gif").getImage();
-    private static final String APPLICATION_TITLE = "Inwentarz 1.2.6";
+    private static final String APPLICATION_TITLE = "Inwentarz 1.3.1";
 
     public MainFrame(JComponent mainComponent) {
         this.setTitle(APPLICATION_TITLE);
@@ -83,7 +83,7 @@ public class MainFrame extends JFrame {
 
         Configuration configuration = loadConfiguration(configurationFilePath);
 
-        JComponent gui = buildApplicationGUI(configuration.getDatabaseDriver(), configuration.getConnectionString());
+        JComponent gui = buildApplicationGUI(configuration.getConnectionString());
         JFrame mainFrame = createMainFrame(gui);
 
         splash.hide();
@@ -97,14 +97,9 @@ public class MainFrame extends JFrame {
 
             Properties properties = new Properties();
             properties.load(new FileInputStream(configurationFilePath));
-            String databaseDriver = properties.getProperty("databaseDriver");
             String connectionString = properties.getProperty("connectionString");
 
-            System.out.println("databaseDriver: " + databaseDriver);
-            System.out.println("connectionString: " + connectionString);
-
             Configuration config = new Configuration();
-            config.setDatabaseDriver(databaseDriver);
             config.setConnectionString(connectionString);
             return config;
         } catch (Exception ex) {
@@ -112,10 +107,10 @@ public class MainFrame extends JFrame {
         }
     }
 
-    private static JComponent buildApplicationGUI(String driverClass, String databaseConnectionUrl) {
+    private static JComponent buildApplicationGUI(String databaseConnectionUrl) {
         final DataChangeManager dataChangeManager = new DataChangeManager();
 
-        ConnectionFactory connectionFactory = new ConnectionFactory(driverClass, databaseConnectionUrl);
+        ConnectionFactory connectionFactory = new ConnectionFactory(databaseConnectionUrl);
 
         IComparatorFactory comparatorFactory = new ComparatorFactory();
 

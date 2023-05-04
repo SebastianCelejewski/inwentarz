@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -261,7 +262,6 @@ public class BookDao implements IBookDao {
 
             Date creationDate = Calendar.getInstance().getTime();
 
-            Statement statement = connection.createStatement();
             String query = "INSERT INTO ksiazki (id, tytul, status, data_wlaczenia, data_utworzenia, data_aktualizacji, cena, wartosc, zrodlo, uwagi) VALUES ";
             query += "( null, ";
             query += "'" + bookData.getTytul() + "', ";
@@ -279,25 +279,27 @@ public class BookDao implements IBookDao {
             query += "'" + bookData.getUwagi() + "') ";
 
             System.out.println("SQL: " + query);
-            statement.execute(query);
+
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.executeUpdate();
             ResultSet keys = statement.getGeneratedKeys();
             keys.next();
             int bookId = keys.getInt(1);
 
             if (bookData.getAutorzy() != null && bookData.getAutorzy().size() > 0) {
                 for (ListElement author : bookData.getAutorzy()) {
-                    statement = connection.createStatement();
                     query = "INSERT INTO autorzy_ksiazki (id_autora, id_ksiazki) VALUES (" + author.getId() + ", " + bookId + ")";
+                    statement = connection.prepareStatement(query);
                     System.out.println("SQL: " + query);
-                    statement.execute(query);
+                    statement.executeUpdate();
                 }
             }
 
             String opis = createBookCreationDescription(bookData);
 
-            statement = connection.createStatement();
             query = "INSERT INTO rejestr_operacji (id_ksiazki, typ, data, opis) values (" + bookId + ", " + TypOperacji.Utworzenie.getId() + ", '" + dtf.format(creationDate) + "', '" + opis + "')";
-            statement.execute(query);
+            statement = connection.prepareStatement(query);
+            statement.executeUpdate();
 
             connection.commit();
 

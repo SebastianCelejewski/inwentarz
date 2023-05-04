@@ -91,5 +91,11 @@
 1.2.5 2017-08-28
 - Mo¿liwe jest wielokrotne weryfikowanie posiadania ksi¹¿ki podczas tego samego skontrum. Dziêki temu dla skontrum trwaj¹cych kilka lat jeœli ksi¹¿ka by³a weryfikowana kilka razy (np. w odstêpie kilku lat), to wszystkie akty weryfikacji bêd¹ zapisane w bazie danych, nie tylko pierwszy.
 
+1.3.0 2022-12-31
+- Upgrade do Javy 8 i ugrade drivera do mysql do najnowszej wersji.
+
+1.3.1 2023-05-04
+- Poprawienie b³êdów przy tworzeniu nowych autorów i nowych ksi¹¿ek.
+
 TODO:
 - Skontrum przez telefon komórkowy
